@@ -1,7 +1,7 @@
 # Welcome to Anonymous Secrets App 👋
 
-| [![](assets/images/1.jpg){ width=415px }](assets/images/1.jpg) | [![](assets/images/2.jpg){ width=415px }](assets/images/2.jpg) |
-| [![](assets/images/3.jpg){ width=415px }](assets/images/3.jpg) | [![](assets/images/4.jpg){ width=415px }](assets/images/4.jpg) |
+| [](assets/images/1.jpg){ width=415px } | [](assets/images/2.jpg){ width=415px } |
+| [](assets/images/3.jpg){ width=415px } | [](assets/images/4.jpg){ width=415px } |
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
