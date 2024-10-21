@@ -1,7 +1,7 @@
 # Welcome to Anonymous Secrets App 👋
 
-| <img src="assets/images/1.jpg" width="415"> | <img src="assets/images/2.jpg" width="415"> |
-| <img src="assets/images/3.jpg" width="415"> | <img src="assets/images/4.jpg" width="415"> |
+<img src="assets/images/1.jpg" width="415"><img src="assets/images/2.jpg" width="415">
+<img src="assets/images/3.jpg" width="415"><img src="assets/images/4.jpg" width="415">
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
