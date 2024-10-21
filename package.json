@@ -1,7 +1,8 @@
 {
   "name": "anonymous-secrets-app",
-  "main": "expo-router/entry",
   "version": "1.0.0",
+  "description": "Anonymous Secrets App is a TuSecreto basic clone for English speakers",
+  "private": false,
   "scripts": {
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
@@ -11,9 +12,18 @@
     "test": "jest --watchAll",
     "lint": "expo lint"
   },
-  "jest": {
-    "preset": "jest-expo"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kirasiris/anonymous-secrets-app.git"
   },
+  "keywords": ["react-native", "fetch-api", "social-network", "mobile-app"],
+  "author": "Kevin Uriel Fonseca",
+  "license": "MIT",
+  "bugs": {
+    "email": "kebin1421@hotmail.com",
+    "url": "https://github.com/kirasiris/anonymous-secrets-app/issues"
+  },
+  "homepage": "https://github.com/kirasiris/anonymous-secrets-app#readme",
   "dependencies": {
     "@expo/vector-icons": "^14.0.3",
     "@react-navigation/drawer": "^6.7.2",
@@ -51,5 +61,8 @@
     "react-test-renderer": "18.2.0",
     "typescript": "~5.3.3"
   },
-  "private": true
+  "main": "expo-router/entry",
+  "jest": {
+    "preset": "jest-expo"
+  }
 }
