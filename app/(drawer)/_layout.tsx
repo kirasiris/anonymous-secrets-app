@@ -1,10 +1,10 @@
 import { Drawer } from 'expo-router/drawer';
 import 'react-native-reanimated';
-import { Image } from 'react-native';
 import { Link } from 'expo-router';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import styles from '@/assets/style';
+import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 
 export default function DrawerLayout() {
 
@@ -14,7 +14,7 @@ export default function DrawerLayout() {
     <Drawer screenOptions={{
       headerShown: true,
       // title: '',
-      headerTitle: () => <Link href="/home"><Image source={require('@/assets/images/favicon.png')} /></Link>,
+      headerTitle: () => <Link href="/home"><FontAwesomeIcon name='user-secret' size={45} style={{color: "#FFF"}} /></Link>,
       headerTitleAlign: "center",
       headerLeft: () => <TabBarIcon name={`menu`} color={`#000`} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} style={[styles.leftButton]} />,
       headerRight: () => <Link href="/create" style={[styles.rightButton]}>New</Link>,
