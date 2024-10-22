@@ -58,7 +58,6 @@ export const fetchurl = async (
 			}
 			return res.json();
 		})
-		.then((data) => data)
 		.catch((err) => {
 			console.log("Error from console.log in setTokenOnServer file xD", err);
 			if (err.name === "AbortError") {
