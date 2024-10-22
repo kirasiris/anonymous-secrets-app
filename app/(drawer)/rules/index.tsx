@@ -26,7 +26,6 @@ export default function RuleScreen() {
           false, // multipart
           false // is remote
         );
-        // console.log(res.data)
         setRulesPage(res.data);
       } catch (err) {
         console.log('Error fetching page:', err)

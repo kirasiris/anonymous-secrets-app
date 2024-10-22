@@ -8,8 +8,8 @@ import { ReportModal } from '@/components/ReportModal';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import { ThemedText } from '@/components/ThemedText';
 import { Loader } from '@/components/Loader';
+import { Flag } from '@/components/Flag';
 import styles from '@/assets/style';
-import { ParseHtml } from '@/components/ParseHtml';
 
 export default function HomeScreen() {
 
@@ -84,6 +84,7 @@ export default function HomeScreen() {
                     {item.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
                     <Text style={[styles.age]}>{item.age}&nbsp;years&nbsp;old</Text>
                     <Text>{calculateTimeSincePublished(item.createdAt)}</Text>
+                    <Flag flag={item.state} />
                   </View>
                   <View style={[styles.rightContainer]}>
                     <Link href={{

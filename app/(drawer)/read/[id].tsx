@@ -8,6 +8,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { calculateTimeSincePublished } from '@/scripts/calculatetimesincepublished';
 import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
+import { Flag } from '@/components/Flag';
 import styles from '@/assets/style';
 
 export default function ReadScreen() {
@@ -61,6 +62,7 @@ export default function ReadScreen() {
                 {secret.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
                 <Text style={[styles.age]}>{secret.age}&nbsp;years&nbsp;old</Text>
                 <Text>{calculateTimeSincePublished(secret.createdAt)}</Text>
+                <Flag flag={secret.flag} />
               </View>
               <View style={[styles.rightContainer]}>
                 <Link href={{

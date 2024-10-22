@@ -16,7 +16,12 @@
     "type": "git",
     "url": "git+https://github.com/kirasiris/anonymous-secrets-app.git"
   },
-  "keywords": ["react-native", "fetch-api", "social-network", "mobile-app"],
+  "keywords": [
+    "react-native",
+    "fetch-api",
+    "social-network",
+    "mobile-app"
+  ],
   "author": "Kevin Uriel Fonseca",
   "license": "MIT",
   "bugs": {
@@ -37,6 +42,7 @@
     "expo-status-bar": "~1.12.1",
     "expo-system-ui": "~3.0.7",
     "expo-web-browser": "~13.0.3",
+    "he": "^1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.5",

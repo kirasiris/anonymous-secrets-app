@@ -194,7 +194,9 @@ export default function CreateScreen() {
             { label: 'Guam', value: 'GU' },
             { label: 'Northern Mariana Islands', value: 'MP' },
             { label: 'Puerto Rico', value: 'PR' },
-            { label: 'United States Minor Outlying Islands', value: 'UM' },
+            { label: 'Johnston Atoll Island', value: 'JA-UM' },
+            { label: 'Midway Island', value: 'MI-UM' },
+            { label: 'Wake Island', value: 'WI-UM' },
             { label: 'Virgin Islands, U.S.', value: 'VI' },
           ]}
           selectedValue={state}

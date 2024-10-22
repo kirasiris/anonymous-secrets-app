@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
-import { ThemedView } from '@/components/ThemedView';
 
 
 export default function ChangelogScreen() {

@@ -31,6 +31,12 @@ const styles = StyleSheet.create({
         marginTop: 15,
         paddingVertical: 15
     },
+    // SINGLE
+    flag: {
+        width: 30,
+        height: 15,
+        marginTop: 10
+    },
     // 404 ERROR PAGE
     errorpage: {
         flex: 1,
