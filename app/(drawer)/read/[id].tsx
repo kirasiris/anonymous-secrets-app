@@ -55,7 +55,7 @@ export default function ReadScreen() {
       />
         {loading ? <Loader /> : (
           secret !== undefined && secret !== null && secret !== '' && 
-          secret.password !== undefined && secret.password !== null && secret.password !== '' ? <VerifyPassword objectId={params.id} str={secret.password} setObject={setSecret} /> : 
+          secret.password !== undefined && secret.password !== null && secret.password !== '' ? <VerifyPassword objectId={params.id} password={secret.password} setObject={setSecret} /> : 
             <>
               <View style={[styles.postContainer]}>
                 <View style={[styles.leftContainer]}>
@@ -64,7 +64,7 @@ export default function ReadScreen() {
                   {secret.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
                   <Text style={[styles.age]}>{secret.age}&nbsp;years&nbsp;old</Text>
                   <Text>{calculateTimeSincePublished(secret.createdAt)}</Text>
-                  <Flag flag={secret.flag} />
+                  <Flag flag={secret.state} />
                 </View>
                 <View style={[styles.rightContainer]}>
                   <Link href={{

@@ -17,10 +17,11 @@ export default function CreateScreen() {
     age: 13,
     sex: '',
     state: '',
-    nsfw: false
+    nsfw: false,
+    deletable: false
   });
 
-  const { title, text, password, age, sex, state, nsfw } = rawFormData;
+  const { title, text, password, age, sex, state, nsfw, deletable } = rawFormData;
 
   const [btnText, setBtnText] = useState('Submit');
 
@@ -46,7 +47,8 @@ export default function CreateScreen() {
       age: 13,
       sex: '',
       state: '',
-      nsfw: false
+      nsfw: false,
+      deletable: false
     });
   }
 
@@ -91,7 +93,7 @@ export default function CreateScreen() {
           multiline={true}
           numberOfLines={4}
         />
-        <Text style={[styles.labelText]}>Password</Text>
+        <Text style={[styles.labelText]}>Password - Leave empty if not required</Text>
         <TextInput
           style={[styles.formControl, styles.mb3]}
           onChangeText={e => {
@@ -206,6 +208,7 @@ export default function CreateScreen() {
               state: e
             })
           }}
+          isSearchable={true}
         />        
         <Text style={[styles.labelText]}>NSFW</Text>
         <Switch
@@ -220,6 +223,22 @@ export default function CreateScreen() {
             setRawFormData({
               ...rawFormData,
               nsfw: e
+            })
+          }}
+        />
+        <Text style={[styles.labelText]}>Delete after 24hrs?</Text>
+        <Switch
+          trackColor={{
+            true: '#81b0ff',
+            false: '#767577'
+          }}
+          thumbColor={deletable ? '#f5dd4b' : '#f4f3f4'}
+          ios_backgroundColor="#3e3e3e"
+          value={deletable}
+          onValueChange={(e: any) => {
+            setRawFormData({
+              ...rawFormData,
+              deletable: e
             })
           }}
         />

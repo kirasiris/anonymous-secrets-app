@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Button, Text, TextInput, View } from "react-native";
 import styles from "@/assets/style";
 import { fetchurl } from "@/scripts/fetchurl";
+import { Toast } from "toastify-react-native";
 
-export function VerifyPassword({ objectId = '' , str = '', setObject = (data: any) => {} }) {
+export function VerifyPassword({ objectId = '' , password = '', setObject = (data: any) => {} }) {
 
     const [rawFormData, setRawFormData] = useState({
-        confirmsecretpassword: str
+        confirmsecretpassword: password
     });
 
     const { confirmsecretpassword } = rawFormData;
@@ -14,32 +15,34 @@ export function VerifyPassword({ objectId = '' , str = '', setObject = (data: an
     const [btnText, setBtnText] = useState('Submit')
 
     const sendPassword = async (e: any) => {
-        try {
-            setBtnText('...');
-            const res = await fetchurl(
-                `/extras/secrets/${objectId}/confirmsecretpassword`, //url
-                "POST", // method
-                "default",// cache
-                rawFormData, // body
-                undefined, // signal
-                false, // multipart
-                false, // is remote
-            );
-    
-            setObject(res.data);
-        } catch (err) {
-            console.log('Error fetching secret with password:', err)
+        setBtnText('...');
+        const res = await fetchurl(
+            `/extras/secrets/${objectId}/confirmsecretpassword`, //url
+            "POST", // method
+            "default",// cache
+            rawFormData, // body
+            undefined, // signal
+            false, // multipart
+            false, // is remote
+        );
+        if(res.status === 'error' || res.status === 'fail') {
+            Toast.error(res.message, 'bottom');
+            setBtnText('Submit');
+            return;
         }
+        Toast.success('Secret revealed', 'bottom');
+        resetForm();
+        setObject(res.data);
     }
 
     const resetForm = () => {
         setRawFormData({
-            confirmsecretpassword: str
+            confirmsecretpassword: password
         })
     }
 
     return  <View style={[styles.container]}>
-                <Text style={[styles.mb3]}>This secret requires a password</Text>
+                <Text>This secret requires a password</Text>
                 <TextInput
                     style={[styles.formControl, styles.mb3]}
                     onChangeText={e => {
