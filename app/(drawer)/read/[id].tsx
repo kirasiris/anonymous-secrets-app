@@ -9,6 +9,7 @@ import { calculateTimeSincePublished } from '@/scripts/calculatetimesincepublish
 import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
 import { Flag } from '@/components/Flag';
+import { VerifyPassword } from '@/components/VerifyPassword';
 import styles from '@/assets/style';
 
 export default function ReadScreen() {
@@ -54,40 +55,41 @@ export default function ReadScreen() {
       />
         {loading ? <Loader /> : (
           secret !== undefined && secret !== null && secret !== '' && 
-          <>
-            <View style={[styles.postContainer]}>
-              <View style={[styles.leftContainer]}>
-                {secret.sex === 'male' && <TabBarIcon name='male' color="#2e6889" />}
-                {secret.sex === 'female' && <TabBarIcon name='female' color="#a23d63" />}
-                {secret.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
-                <Text style={[styles.age]}>{secret.age}&nbsp;years&nbsp;old</Text>
-                <Text>{calculateTimeSincePublished(secret.createdAt)}</Text>
-                <Flag flag={secret.flag} />
+          secret.password !== undefined && secret.password !== null && secret.password !== '' ? <VerifyPassword objectId={params.id} str={secret.password} setObject={setSecret} /> : 
+            <>
+              <View style={[styles.postContainer]}>
+                <View style={[styles.leftContainer]}>
+                  {secret.sex === 'male' && <TabBarIcon name='male' color="#2e6889" />}
+                  {secret.sex === 'female' && <TabBarIcon name='female' color="#a23d63" />}
+                  {secret.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
+                  <Text style={[styles.age]}>{secret.age}&nbsp;years&nbsp;old</Text>
+                  <Text>{calculateTimeSincePublished(secret.createdAt)}</Text>
+                  <Flag flag={secret.flag} />
+                </View>
+                <View style={[styles.rightContainer]}>
+                  <Link href={{
+                    pathname: `/read/${secret._id}`,
+                    // params: {}
+                  }}>
+                    <ThemedText type='subtitle' darkColor={true} style={{marginBottom: 5}}>{secret.title}</ThemedText>
+                  </Link>
+                  <Text style={[styles.content]}>{secret.text}</Text>
+                </View>
               </View>
-              <View style={[styles.rightContainer]}>
+              <View style={[styles.footer]}>
                 <Link href={{
                   pathname: `/read/${secret._id}`,
                   // params: {}
                 }}>
-                  <ThemedText type='subtitle' darkColor={true} style={{marginBottom: 5}}>{secret.title}</ThemedText>
+                  <Pressable style={[styles.icon]}>
+                    <FontAwesomeIcon name='link' size={15} />
+                  </Pressable>
                 </Link>
-                <Text style={[styles.content]}>{secret.text}</Text>
-              </View>
-            </View>
-            <View style={[styles.footer]}>
-              <Link href={{
-                pathname: `/read/${secret._id}`,
-                // params: {}
-              }}>
                 <Pressable style={[styles.icon]}>
-                  <FontAwesomeIcon name='link' size={15} />
+                  <ReportModal resourceId={secret._id} postType="secret" onModel='Secret' />
                 </Pressable>
-              </Link>
-              <Pressable style={[styles.icon]}>
-                <ReportModal resourceId={secret._id} postType="secret" onModel='Secret' />
-              </Pressable>
-            </View>
-          </>
+              </View>
+            </>
         )}
     </ScrollView>
   )
