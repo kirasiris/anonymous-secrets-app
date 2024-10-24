@@ -9,6 +9,24 @@ const styles = StyleSheet.create({
         left: 0,
         position: 'absolute'
     },
+    btn: {
+        borderWidth: 1,
+        borderRadius: 6,
+        backgroundColor: 'transparent',
+        verticalAlign: 'middle',
+        textDecorationLine: 'none',
+        textAlign: 'center',
+        color: '#DEE2E6',
+        lineHeight: 1.5,
+        fontWeight: '400',
+        fontSize: 16,
+        paddingVertical: 15,
+        paddingHorizontal: 12,
+    },
+    btnOutlineLight: {
+        color: '##f8f9fa',
+        borderColor: '#f8f9fa',
+    },
     mb3: {
         marginBottom: 16
     },
@@ -18,6 +36,11 @@ const styles = StyleSheet.create({
     },
     icon: {
         padding: 10
+    },
+    headerRightContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginRight: 10,
     },
     leftButton: {
         marginHorizontal: 11,

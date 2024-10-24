@@ -10,6 +10,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { Loader } from '@/components/Loader';
 import { Flag } from '@/components/Flag';
 import styles from '@/assets/style';
+import { SearchBar } from '@/components/SearchBar';
 
 export default function HomeScreen() {
 
@@ -48,6 +49,7 @@ export default function HomeScreen() {
         setLoading(false);
       }
     };
+    
     fetchSecrets(`?page=${page}&limit=${limit}&sort=${sort}${sex}${age}${secondaryage}${nsfw}${estate}&decrypt=true`);
   }, [sex, age, secondaryage, nsfw, estate]);
 
@@ -70,6 +72,7 @@ export default function HomeScreen() {
           headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#000" style={[styles.filterIcon]} /></Link>
         }}
       />
+      <SearchBar />
       {loading ? <Loader /> : (
         secrets !== undefined && secrets !== null && secrets.length > 0 ? (
           <VirtualizedList
