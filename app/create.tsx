@@ -248,7 +248,7 @@ export default function CreateScreen() {
             })
           }}
         />
-        <View style={[styles.fixToText]}>
+        <View style={[styles.fixToText, { marginBottom: 5 }]}>
           <Button title='Clear' onPress={resetForm} />
           <Button title={btnText} onPress={sendSecret} />
         </View>

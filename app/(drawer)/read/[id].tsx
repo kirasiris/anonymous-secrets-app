@@ -82,6 +82,7 @@ export default function ReadScreen() {
                   }}>
                     <ThemedText type='subtitle' darkColor={true} style={{marginBottom: 5}}>{secret.title}</ThemedText>
                   </Link>
+                  <Text>ID: {secret._id}</Text>
                   <Text style={[styles.content]}>{secret.text}</Text>
                 </View>
               </View>

@@ -7,7 +7,6 @@ import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
 import { formatDateWithoutTime } from '@/scripts/formatdatewithoutime';
-import  {ParseHtml} from '@/components/ParseHtml';
 
 export default function RuleScreen() {
 
@@ -48,10 +47,12 @@ export default function RuleScreen() {
         {loading ? <Loader /> : (
           rulesPage !== undefined && rulesPage !== null && rulesPage !== '' && (
           <View style={[styles.container]}>
+            <>
             <ThemedText type='title'>IMPORTANT TO READ</ThemedText>
             <ThemedText type='subtitle'>Please make sure to read these!</ThemedText>
             <Text>Published on {formatDateWithoutTime(rulesPage.createdAt)} by {rulesPage.user.username}</Text>
-            <ParseHtml text={rulesPage.text} />
+            <Text>{rulesPage.text}</Text>
+            </>
           </View>
           )
         )}
