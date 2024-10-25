@@ -2,7 +2,7 @@ import { Drawer } from 'expo-router/drawer';
 import 'react-native-reanimated';
 import { Link } from 'expo-router';
 import { useNavigation, DrawerActions } from '@react-navigation/native';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import styles from '@/assets/style';

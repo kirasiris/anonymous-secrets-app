@@ -60,8 +60,14 @@ export default function CreateScreen() {
           headerShown: true,
           title: 'Create',
           headerTitleAlign: 'center',
-          headerLeft: () => <Link href={`/`} style={[styles.filterIcon]}>Home</Link>,
-          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#000" style={[styles.filterIcon]} /></Link>,
+          headerLeft: () => <Link href={`/`} style={[styles.filterIcon, { color: '#FFF' } ]}>Home</Link>,
+          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#FFFFFF" style={[styles.filterIcon]} /></Link>,
+          headerStyle: {
+            backgroundColor: '#0163D2'
+          },
+          headerTitleStyle: {
+            color: '#FFFFFF'
+          }
         }}
       />
       <View style={[styles.container]}>

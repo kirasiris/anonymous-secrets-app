@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "yoursecretapp",
+    "scheme": "anonymous-secrets-app",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/splash.png",
@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kirasiris.anonymoussecretsapp"
     },
     "android": {
       "adaptiveIcon": {
@@ -21,7 +22,8 @@
         "backgroundColor": "#ffffff",
         "package": "anonymous-secrets-app",
         "versionCode": 1
-      }
+      },
+      "package": "com.kirasiris.anonymoussecretsapp"
     },
     "web": {
       "bundler": "metro",
@@ -33,6 +35,12 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "c05e300e-e7a9-40d5-b42f-b79d05cd9050"
+      }
+    },
+    "owner": "kirasiris"
   }
 }

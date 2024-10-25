@@ -6,7 +6,7 @@ import { fetchurl } from '@/scripts/fetchurl';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import styles from '@/assets/style';
 
-export default function CreateScreen() {
+export default function SearchScreen() {
   const router = useRouter();
 
   const [rawFormData, setRawFormData] = useState({
@@ -53,8 +53,14 @@ export default function CreateScreen() {
           headerShown: true,
           title: 'Search',
           headerTitleAlign: 'center',
-          headerLeft: () => <Link href={`/`} style={[styles.filterIcon]}>Home</Link>,
-          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#000" style={[styles.filterIcon]} /></Link>,
+          headerLeft: () => <Link href={`/`} style={[styles.filterIcon, { color: '#FFF' }]}>Home</Link>,
+          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#FFFFFF" style={[styles.filterIcon]} /></Link>,
+          headerStyle: {
+            backgroundColor: '#0163D2'
+          },
+          headerTitleStyle: {
+            color: "#FFFFFF",
+          },
         }}
       />
       <View style={[styles.container]}>

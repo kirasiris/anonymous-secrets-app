@@ -1,6 +1,7 @@
-import { Link, Stack, useLocalSearchParams } from 'expo-router';
+import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react'
 import { Pressable, ScrollView, Text, View } from 'react-native'
+import { Toast } from 'toastify-react-native';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { ReportModal } from '@/components/ReportModal';
@@ -13,6 +14,7 @@ import { VerifyPassword } from '@/components/VerifyPassword';
 import styles from '@/assets/style';
 
 export default function ReadScreen() {
+  const router = useRouter();
 
   const [secret, setSecret] = useState<any>({});
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,6 +32,13 @@ export default function ReadScreen() {
           false, // multipart
           false // is remote
         );
+
+        // If error loading secret, or secret is not found, redirect back to homepage!
+        if(res.status === 'error') {
+          Toast.error(res.message, 'bottom');
+          router.navigate('/');
+          return;
+        }
 
         setSecret(res.data);
 
