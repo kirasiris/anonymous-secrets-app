@@ -1,8 +1,9 @@
 import { fetchurl } from '@/scripts/fetchurl';
 import { useState } from 'react';
-import { Text, View, StyleSheet, Pressable, Modal, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
+import { View, StyleSheet, Pressable, Modal, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
 import { Toast } from 'toastify-react-native';
 import { FontAwesomeIcon } from './FontAwesomeIcon';
+import { ThemedText } from './ThemedText';
 
 export function ReportModal({ resourceId = null, postType = '', onModel = 'Report' }){
     const [reportModal, setReportModal] = useState(false);
@@ -40,7 +41,7 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
             title: '',
             text: ''
         });
-    };    
+    };
 
   return (
     <>
@@ -60,7 +61,7 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
                     <View style={styles.centeredView}>
                         <TouchableWithoutFeedback>
                             <View style={styles.modalView}>
-                                <Text style={styles.modalText}>Report Object Id {resourceId}</Text>
+                                <ThemedText type='default' style={[styles.modalText]}>Report Object Id {resourceId}</ThemedText>
                                 <TextInput
                                     style={[styles.formControl, styles.mb3]}
                                     onChangeText={e => {
@@ -151,7 +152,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
       },
       formControl: {
-        width: "100%",
         paddingVertical: 6,
         paddingHorizontal: 12,
         fontSize: 16,

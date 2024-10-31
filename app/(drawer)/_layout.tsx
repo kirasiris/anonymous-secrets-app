@@ -15,11 +15,11 @@ export default function DrawerLayout() {
     <Drawer screenOptions={{
       headerShown: true,
       // title: '',
-      headerTitle: () => <Link href="/home"><FontAwesomeIcon name='user-secret' size={45} style={{color: "#FFF"}} /></Link>,
+      headerTitle: () => <Link href="/home"><FontAwesomeIcon name='user-secret' size={45} lightColor="#FFF" darkColor="#FFF" /></Link>,
       headerTitleAlign: "center",
       headerLeft: () => <TabBarIcon name={`menu`} color={`#000`} onPress={() => navigation.dispatch(DrawerActions.openDrawer())} style={[styles.leftButton]} />,
       headerRight: () =>  <View style={styles.headerRightContainer}>
-                            <Link href={`/search`}><FontAwesomeIcon name='search' color="#FFF" /></Link>
+                            <Link href={`/search`}><FontAwesomeIcon name='search' lightColor="#FFF" darkColor="#FFF" /></Link>
                             <Link href="/create" style={[styles.rightButton, styles.btn, styles.btnOutlineLight, {color: '#FFF'}]}>New</Link>
                           </View>,
       headerStyle: {

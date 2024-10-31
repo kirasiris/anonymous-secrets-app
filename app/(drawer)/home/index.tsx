@@ -1,4 +1,4 @@
-import {  VirtualizedList, View, Text, ActivityIndicator, TouchableOpacity } from 'react-native';
+import {  VirtualizedList, View, ActivityIndicator, TouchableOpacity, ScrollView } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
@@ -11,6 +11,7 @@ import { Loader } from '@/components/Loader';
 import { Flag } from '@/components/Flag';
 import styles from '@/assets/style';
 import { SearchBar } from '@/components/SearchBar';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function HomeScreen() {
 
@@ -51,6 +52,7 @@ export default function HomeScreen() {
     };
     
     fetchSecrets(`?page=${page}&limit=${limit}&sort=${sort}${sex}${age}${secondaryage}${nsfw}${estate}&decrypt=true`);
+    
   }, [sex, age, secondaryage, nsfw, estate]);
 
   const getItem = (data: any[], index: number) => data[index];
@@ -69,10 +71,11 @@ export default function HomeScreen() {
           title: 'Home',
           headerTitleAlign: 'left',
           // headerLeft: () => <Text>Example Left</Text>,
-          headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#000" style={[styles.filterIcon]} /></Link>
+          headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
         }}
       />
-      <SearchBar />
+      <SearchBar lightColor="#FFF" darkColor="#FFF" />
+      <ThemedView style={{ height: '100%' }}>
       {loading ? <Loader /> : (
         secrets !== undefined && secrets !== null && secrets.length > 0 ? (
           <VirtualizedList
@@ -85,8 +88,8 @@ export default function HomeScreen() {
                     {item.sex === 'male' && <TabBarIcon name='male' color="#2e6889" />}
                     {item.sex === 'female' && <TabBarIcon name='female' color="#a23d63" />}
                     {item.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
-                    <Text style={[styles.age]}>{item.age}&nbsp;years&nbsp;old</Text>
-                    <Text>{calculateTimeSincePublished(item.createdAt)}</Text>
+                    <ThemedText type="default" style={[styles.age]}>{item.age}&nbsp;years&nbsp;old</ThemedText>
+                    <ThemedText type="default">{calculateTimeSincePublished(item.createdAt)}</ThemedText>
                     <Flag flag={item.state} />
                   </View>
                   <View style={[styles.rightContainer]}>
@@ -94,14 +97,11 @@ export default function HomeScreen() {
                       pathname: `/read/${item._id}`,
                       // params: {}
                     }}>
-                      <ThemedText type='subtitle' darkColor={true} style={[{
-                        marginBottom: 5
-                      }]}>{item.title}</ThemedText>
+                      <ThemedText type='subtitle' style={{marginBottom: 5}}>{item.title}</ThemedText>
                     </Link>
                     {item.nsfw ?
-                    <Text style={[styles.nsfwcontent]}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</Text> :
-                    <Text style={[styles.content]}>{item.text}</Text>
-                    // <ParseHtml styleList={[styles.content]} text={item.text} />
+                    <ThemedText type="default" style={[styles.nsfwcontent]}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</ThemedText> :
+                    <ThemedText type="default" style={[styles.content]}>{item.text}</ThemedText>
                     }
                   </View>
                 </View>
@@ -128,14 +128,15 @@ export default function HomeScreen() {
           <View style={[styles.postContainer]}>
             <View style={[styles.leftContainer]}>
               <TabBarIcon name='male' color="#2e6889" />
-              <Text style={[styles.age]}>ADMIN</Text>
+              <ThemedText type="default" style={[styles.age]}>ADMIN</ThemedText>
             </View>
             <View style={[styles.rightContainer]}>
-              <Text style={[styles.content]}>NO SECRETS YET</Text>
+              <ThemedText type="default" style={[styles.content]}>NO SECRETS YET</ThemedText>
             </View>
           </View>
         )
       )}
+      </ThemedView>
     </>
   );
 }

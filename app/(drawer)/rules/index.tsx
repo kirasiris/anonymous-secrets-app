@@ -1,4 +1,4 @@
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useEffect, useState } from 'react';
 import { Link, Stack } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
@@ -7,6 +7,7 @@ import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
 import { formatDateWithoutTime } from '@/scripts/formatdatewithoutime';
+import { ThemedView } from '@/components/ThemedView';
 
 export default function RuleScreen() {
 
@@ -36,26 +37,28 @@ export default function RuleScreen() {
   }, []);
 
   return (
-      <ScrollView>
-        <Stack.Screen options={{
-          headerShown: true,
-          title: rulesPage.title,
-          headerTitleAlign: 'left',
-          // headerLeft: () => <Text>Example Left</Text>,
-          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#000" style={[styles.filterIcon]} /></Link>
-        }} />
-        {loading ? <Loader /> : (
-          rulesPage !== undefined && rulesPage !== null && rulesPage !== '' && (
-          <View style={[styles.container]}>
-            <>
-            <ThemedText type='title'>IMPORTANT TO READ</ThemedText>
-            <ThemedText type='subtitle'>Please make sure to read these!</ThemedText>
-            <Text>Published on {formatDateWithoutTime(rulesPage.createdAt)} by {rulesPage.user.username}</Text>
-            <Text>{rulesPage.text}</Text>
-            </>
-          </View>
-          )
-        )}
-      </ScrollView>
+    <>
+      <Stack.Screen options={{
+        headerShown: true,
+        title: rulesPage.title,
+        headerTitleAlign: 'left',
+        // headerLeft: () => <Text>Example Left</Text>,
+        headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
+      }} />
+      <ThemedView style={{ height: '100%' }}>
+        <ScrollView>
+          {loading ? <Loader /> : (
+            rulesPage !== undefined && rulesPage !== null && rulesPage !== '' && (
+            <View style={[styles.container]}>
+              <ThemedText type='title'>IMPORTANT TO READ</ThemedText>
+              <ThemedText type='subtitle'>Please make sure to read these!</ThemedText>
+              <ThemedText type="default">Published on {formatDateWithoutTime(rulesPage.createdAt)} by {rulesPage.user.username}</ThemedText>
+              <ThemedText type="default">{rulesPage.text}</ThemedText>
+            </View>
+            )
+          )}
+        </ScrollView>
+      </ThemedView>
+    </>
   );
 }

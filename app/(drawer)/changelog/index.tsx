@@ -1,4 +1,4 @@
-import { View, Text, SectionList } from 'react-native';
+import { View, SectionList } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
+import { ThemedView } from '@/components/ThemedView';
 
 
 export default function ChangelogScreen() {
@@ -61,37 +62,39 @@ export default function ChangelogScreen() {
         title: 'Changelog',
         headerTitleAlign: 'left',
         // headerLeft: () => <Text>Example Left</Text>,
-        headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' color="#000" style={[styles.filterIcon]} /></Link>
+        headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />
-        <View style={[styles.container]}>
-        {
-          loading ? (
-            <Loader />
-          ) : changelogs.length > 0 ? (
-            <>
-              <ThemedText type='subtitle' style={[styles.mb3]}>These are the changes the backend of the application receives</ThemedText>
-              <SectionList
-                sections={changelogs}
-                keyExtractor={(item) => item._id.toString()}
-                renderItem={({ item }) => 
-                  <View style={[styles.container]}>
-                    <ThemedText type='default'>{item.text}</ThemedText>
+        <ThemedView style={{ height: '100%' }}>
+          <View style={[styles.container]}>
+          {
+            loading ? (
+              <Loader />
+            ) : changelogs.length > 0 ? (
+              <>
+                <ThemedText type='subtitle' style={[styles.mb3]}>These are the changes the backend of the application receives</ThemedText>
+                <SectionList
+                  sections={changelogs}
+                  keyExtractor={(item) => item._id.toString()}
+                  renderItem={({ item }) => 
+                    <View style={[styles.container]}>
+                      <ThemedText type='default'>{item.text}</ThemedText>
+                    </View>
+                  }
+                  renderSectionHeader={({ section: { title } }) => (
+                    <ThemedText type="default" style={{ fontWeight: 'bold', fontSize: 16 }}>{title}</ThemedText>
+                  )}
+                />
+              </>
+                ) : (
+                  <View>
+                    <ThemedText type="default">
+                      NO CHANGELOGS YET
+                    </ThemedText>
                   </View>
-                }
-                renderSectionHeader={({ section: { title } }) => (
-                  <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{title}</Text>
-                )}
-              />
-            </>
-              ) : (
-                <View>
-                  <ThemedText type="default">
-                    NO CHANGELOGS YET
-                  </ThemedText>
-                </View>
-              )
-        }
-        </View>
+                )
+          }
+          </View>
+        </ThemedView>
     </>
   );
 }
