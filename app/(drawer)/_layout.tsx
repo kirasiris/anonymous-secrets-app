@@ -1,3 +1,4 @@
+import React from 'react';
 import { Drawer } from 'expo-router/drawer';
 import 'react-native-reanimated';
 import { Link } from 'expo-router';

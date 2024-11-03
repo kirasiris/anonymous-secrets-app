@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link, Stack } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';

@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
+import { Button, TextInput, View } from "react-native";
 import styles from "@/assets/style";
 import { fetchurl } from "@/scripts/fetchurl";
 import { Toast } from "toastify-react-native";
+import { ThemedText } from "./ThemedText";
 
 export function VerifyPassword({ objectId = '' , password = '', setObject = (data: any) => {} }) {
 
     const [rawFormData, setRawFormData] = useState({
-        confirmsecretpassword: password
+        confirmsecretpassword: ''
     });
 
     const { confirmsecretpassword } = rawFormData;
@@ -42,7 +43,7 @@ export function VerifyPassword({ objectId = '' , password = '', setObject = (dat
     }
 
     return  <View style={[styles.container]}>
-                <Text>This secret requires a password</Text>
+                <ThemedText type="default">This secret requires a password</ThemedText>
                 <TextInput
                     style={[styles.formControl, styles.mb3]}
                     onChangeText={e => {

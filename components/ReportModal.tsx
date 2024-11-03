@@ -1,7 +1,7 @@
-import { fetchurl } from '@/scripts/fetchurl';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Pressable, Modal, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
 import { Toast } from 'toastify-react-native';
+import { fetchurl } from '@/scripts/fetchurl';
 import { FontAwesomeIcon } from './FontAwesomeIcon';
 import { ThemedText } from './ThemedText';
 

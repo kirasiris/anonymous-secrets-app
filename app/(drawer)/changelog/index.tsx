@@ -1,12 +1,13 @@
 import { View, SectionList } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
+import React, { useEffect, useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
-import { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
 import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
+import { ParseHtml } from '@/components/ParseHtml';
 
 
 export default function ChangelogScreen() {
@@ -53,7 +54,7 @@ export default function ChangelogScreen() {
       }
     };
     fetchChangelogs(`?page=${page}&limit=${limit}&sort=${sort}&project=anonymous-secrets-app`);
-  }, [searchParams])
+  }, [searchParams]);
 
   return (
     <>
@@ -77,7 +78,7 @@ export default function ChangelogScreen() {
                   keyExtractor={(item) => item._id.toString()}
                   renderItem={({ item }) => 
                     <View style={[styles.container]}>
-                      <ThemedText type='default'>{item.text}</ThemedText>
+                      <ParseHtml text={item.text} />
                     </View>
                   }
                   renderSectionHeader={({ section: { title } }) => (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { TextInput } from "react-native";
 import { fetchurl } from "@/scripts/fetchurl";
 import { Toast } from "toastify-react-native";
@@ -22,7 +22,7 @@ export function SearchBar({
 
     const { _id } = rawFormData;
 
-    const [btnText, setBtnText] = useState('Submit');
+    const [btnText, setBtnText] = useState('Search by ID');
 
     const searchSecret = async (e: any) => {
         setBtnText('...');
@@ -62,7 +62,7 @@ export function SearchBar({
                     })
                 }}
                 value={_id}
-                placeholder="Search by ID"
+                placeholder={btnText}
                 keyboardType='default'
                 returnKeyType="search"
                 onSubmitEditing={searchSecret}

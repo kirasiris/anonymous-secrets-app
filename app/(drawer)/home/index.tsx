@@ -1,6 +1,6 @@
-import {  VirtualizedList, View, ActivityIndicator, TouchableOpacity, ScrollView } from 'react-native';
+import {  VirtualizedList, View, ActivityIndicator, TouchableOpacity } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
 import { calculateTimeSincePublished } from '@/scripts/calculatetimesincepublished';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
@@ -99,6 +99,7 @@ export default function HomeScreen() {
                     }}>
                       <ThemedText type='subtitle' style={{marginBottom: 5}}>{item.title}</ThemedText>
                     </Link>
+                    <ThemedText type="default">ID: {item._id}</ThemedText>
                     {item.nsfw ?
                     <ThemedText type="default" style={[styles.nsfwcontent]}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</ThemedText> :
                     <ThemedText type="default" style={[styles.content]}>{item.text}</ThemedText>

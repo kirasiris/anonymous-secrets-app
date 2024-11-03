@@ -1,5 +1,5 @@
 import { ScrollView, View } from 'react-native';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Stack } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
@@ -8,6 +8,7 @@ import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
 import { formatDateWithoutTime } from '@/scripts/formatdatewithoutime';
 import { ThemedView } from '@/components/ThemedView';
+import { ParseHtml } from '@/components/ParseHtml';
 
 export default function RuleScreen() {
 
@@ -53,7 +54,7 @@ export default function RuleScreen() {
               <ThemedText type='title'>IMPORTANT TO READ</ThemedText>
               <ThemedText type='subtitle'>Please make sure to read these!</ThemedText>
               <ThemedText type="default">Published on {formatDateWithoutTime(rulesPage.createdAt)} by {rulesPage.user.username}</ThemedText>
-              <ThemedText type="default">{rulesPage.text}</ThemedText>
+              <ParseHtml text={rulesPage.text} />
             </View>
             )
           )}

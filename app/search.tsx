@@ -1,3 +1,4 @@
+import React from 'react';
 import { ScrollView, View} from 'react-native';
 import { Link, Stack } from 'expo-router';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
