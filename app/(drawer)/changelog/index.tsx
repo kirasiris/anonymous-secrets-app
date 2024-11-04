@@ -67,12 +67,13 @@ export default function ChangelogScreen() {
       }} />
         <ThemedView style={{ height: '100%' }}>
           <View style={[styles.container]}>
+            <ThemedText type='subtitle' style={[styles.mb3]}>These are the changes the backend of the application receives</ThemedText>
+          </View>
+          <View style={[styles.container, { flex: 1, marginLeft: 15, marginRight: 0 }]}>
           {
             loading ? (
               <Loader />
             ) : changelogs.length > 0 ? (
-              <>
-                <ThemedText type='subtitle' style={[styles.mb3]}>These are the changes the backend of the application receives</ThemedText>
                 <SectionList
                   sections={changelogs}
                   keyExtractor={(item) => item._id.toString()}
@@ -85,7 +86,6 @@ export default function ChangelogScreen() {
                     <ThemedText type="default" style={{ fontWeight: 'bold', fontSize: 16 }}>{title}</ThemedText>
                   )}
                 />
-              </>
                 ) : (
                   <View>
                     <ThemedText type="default">
