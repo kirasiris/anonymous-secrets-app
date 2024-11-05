@@ -1,4 +1,4 @@
-import { View, SectionList } from 'react-native';
+import { View, SectionList, PixelRatio } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { ThemedText } from '@/components/ThemedText';
@@ -56,12 +56,21 @@ export default function ChangelogScreen() {
     fetchChangelogs(`?page=${page}&limit=${limit}&sort=${sort}&project=anonymous-secrets-app`);
   }, [searchParams]);
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale;
+
   return (
     <>
       <Stack.Screen options={{
         headerShown: true,
         title: 'Changelog',
         headerTitleAlign: 'left',
+        headerTitleStyle: {
+          fontSize: scaledFontSize, // Use scaled font size
+        },
         // headerLeft: () => <Text>Example Left</Text>,
         headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />

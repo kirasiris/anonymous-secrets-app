@@ -1,4 +1,4 @@
-import { Button, ScrollView, Switch, TextInput, View } from 'react-native';
+import { ScrollView, Switch, TextInput, View } from 'react-native';
 import { Link, Stack, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import Dropdown from 'react-native-input-select';
@@ -9,6 +9,7 @@ import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { CustomButton } from '@/components/CustomButton';
 
 export default function CreateScreen() {
   const backgroundColor = useThemeColor({ light: "#FFF", dark: "#FFF" }, 'background');
@@ -30,7 +31,7 @@ export default function CreateScreen() {
 
   const [btnText, setBtnText] = useState('Submit');
 
-  const sendSecret = async (e: any) => {
+  const sendSecret = async () => {
     setBtnText('...')
     const res = await fetchurl(`/extras/secrets`, "POST", "no-cache", rawFormData);
     if(res.status === 'error') {
@@ -258,8 +259,8 @@ export default function CreateScreen() {
               }}
             />
             <View style={[styles.fixToText, { marginBottom: 5 }]}>
-              <Button title='Clear' onPress={resetForm} />
-              <Button title={btnText} onPress={sendSecret} />
+              <CustomButton title="Clear" onPress={resetForm} lightColor="#000" darkColor="#000" />
+              <CustomButton title={btnText} onPress={sendSecret} lightColor="#000" darkColor="#000" />
             </View>
           </View>
         </ScrollView>

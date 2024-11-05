@@ -1,6 +1,6 @@
 {
   "name": "anonymous-secrets-app",
-  "version": "7.0.1",
+  "version": "10.0.0",
   "description": "Anonymous Secrets App is an improved and better clone of TuSecreto.io for English speakers",
   "private": false,
   "scripts": {

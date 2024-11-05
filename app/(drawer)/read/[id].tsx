@@ -1,6 +1,6 @@
 import { Link, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react'
-import { Pressable, ScrollView, View } from 'react-native'
+import { PixelRatio, Pressable, ScrollView, View } from 'react-native'
 import { Toast } from 'toastify-react-native';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
@@ -52,6 +52,12 @@ export default function ReadScreen() {
     fetchSecret();
   }, [params.id]);
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale;
+
   return (
     <>
       <Stack.Screen
@@ -59,6 +65,9 @@ export default function ReadScreen() {
           headerShown: true,
           title: 'Reading...',
           headerTitleAlign: 'left',
+          headerTitleStyle: {
+            fontSize: scaledFontSize, // Use scaled font size
+          },
           // headerLeft: () => <Text>Example Left</Text>,
           headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
         }}
@@ -90,14 +99,6 @@ export default function ReadScreen() {
                     </View>
                   </View>
                   <View style={[styles.footer]}>
-                    <Link href={{
-                      pathname: `/read/${secret._id}`,
-                      // params: {}
-                    }}>
-                      <Pressable style={[styles.icon]}>
-                        <FontAwesomeIcon name='link' size={15} />
-                      </Pressable>
-                    </Link>
                     <Pressable style={[styles.icon]}>
                       <ReportModal resourceId={secret._id} postType="secret" onModel='Secret' />
                     </Pressable>

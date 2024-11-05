@@ -1,4 +1,4 @@
-import {  VirtualizedList, View, ActivityIndicator, TouchableOpacity } from 'react-native';
+import {  VirtualizedList, View, ActivityIndicator, TouchableOpacity, PixelRatio } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
@@ -63,6 +63,12 @@ export default function HomeScreen() {
     return  <ActivityIndicator size="large" color="#0000FF" />
   }
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale; // Default font size of 16sp
+
   return (
     <>
       <Stack.Screen
@@ -70,6 +76,9 @@ export default function HomeScreen() {
           headerShown: true,
           title: 'Home',
           headerTitleAlign: 'left',
+          headerTitleStyle: {
+            fontSize: scaledFontSize, // Use scaled font size
+          },
           // headerLeft: () => <Text>Example Left</Text>,
           headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
         }}
@@ -107,13 +116,14 @@ export default function HomeScreen() {
                   </View>
                 </View>
                 <View style={[styles.footer]}>
-                  <Link href={{
-                    pathname: `/read/${item._id}`,
-                    // params: {}
-                  }}>
-                    <TouchableOpacity style={[styles.icon]}>
-                      <FontAwesomeIcon name='link' size={15} />
-                    </TouchableOpacity>
+                  <Link
+                    href={{
+                      pathname: `/read/${item._id}`,
+                      // params: {}
+                    }}
+                    style={[styles.icon]}
+                    >
+                      <ThemedText type="default">Read More &gt;&gt;</ThemedText>
                   </Link>
                   <TouchableOpacity style={[styles.icon]}>
                     <ReportModal resourceId={item._id} postType="secret" onModel='Secret' />

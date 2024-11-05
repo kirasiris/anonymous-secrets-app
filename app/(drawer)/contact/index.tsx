@@ -1,4 +1,4 @@
-import { Button, ScrollView, TextInput, View } from 'react-native';
+import { PixelRatio, ScrollView, TextInput, View } from 'react-native';
 import { Link, Stack } from 'expo-router';
 import React, { useState } from 'react';
 import Dropdown from 'react-native-input-select';
@@ -9,6 +9,7 @@ import styles from '@/assets/style';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { CustomButton } from '@/components/CustomButton';
 
 
 export default function ContactScreen() {
@@ -25,7 +26,7 @@ export default function ContactScreen() {
 
   const [btnText, setBtnText] = useState('Submit');
 
-  const sendEmail = async (e : any) => {
+  const sendEmail = async () => {
     setBtnText('...')
     const res = await fetchurl(`/emails`, "POST", "no-cache", rawFormData)
     if(res.status === 'error') {
@@ -46,19 +47,29 @@ export default function ContactScreen() {
       text: ''
     })
   }
-    
+
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale;
+
   return (
     <>
       <Stack.Screen options={{
           headerShown: true,
           title: 'Contact',
           headerTitleAlign: 'left',
+          headerTitleStyle: {
+            fontSize: scaledFontSize, // Use scaled font size
+          },
           // headerLeft: () => <Text>Example Left</Text>,
           headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={styles.filterIcon} /></Link>
       }} />
       <ThemedView style={{ height: '100%' }}>
         <ScrollView>
           <View style={[styles.container]}>
+            <ThemedText type="default" style={[styles.labelText]}>Name</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -71,6 +82,7 @@ export default function ContactScreen() {
               placeholder='John Doe'
               keyboardType='default'
             />
+            <ThemedText type="default" style={[styles.labelText]}>Email</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -83,7 +95,7 @@ export default function ContactScreen() {
               placeholder='john@doe.com'
               keyboardType='email-address'
             />
-            <ThemedText type="default">Subject</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>Subject</ThemedText>
             <Dropdown
               label={undefined}
               placeholder="Select an option..."
@@ -101,6 +113,7 @@ export default function ContactScreen() {
                 })
               }}
             />
+            <ThemedText type="default" style={[styles.labelText]}>Message</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -116,8 +129,8 @@ export default function ContactScreen() {
               numberOfLines={4}
             />
             <View style={[styles.fixToText, { marginBottom: 5 }]}>
-              <Button title='Clear' onPress={resetForm} />
-              <Button title={btnText} onPress={sendEmail} />
+              <CustomButton title="Clear" onPress={resetForm} lightColor="#000" darkColor="#000" />
+              <CustomButton title={btnText} onPress={sendEmail} lightColor="#000" darkColor="#000" />
             </View>
           </View>
         </ScrollView>

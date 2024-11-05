@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     },
     formControl: {
         width: '100%',
-        paddingVertical: 6,
+        paddingVertical: 12,
         paddingHorizontal: 12,
         fontSize: 16,
         fontWeight: "400",
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderColor: "#DEE2E6",
-        borderRadius: 0
+        borderRadius: 0,
+        minHeight: 48
     },
     fixToText: {
         flexDirection: 'row',

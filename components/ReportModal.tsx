@@ -1,11 +1,23 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Pressable, Modal, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
+import { View, StyleSheet, Pressable, Modal, TouchableWithoutFeedback, TextInput, type BackgroundPropType } from 'react-native';
 import { Toast } from 'toastify-react-native';
 import { fetchurl } from '@/scripts/fetchurl';
-import { FontAwesomeIcon } from './FontAwesomeIcon';
 import { ThemedText } from './ThemedText';
+import { useThemeColor } from '@/hooks/useThemeColor';
+import { CustomButton } from './CustomButton';
 
-export function ReportModal({ resourceId = null, postType = '', onModel = 'Report' }){
+export type ModalBackgroundProps = BackgroundPropType & {
+    resourceId?: null;
+    postType?: string;
+    onModel?: string;
+    lightColor?: string;
+    darkColor?: string;
+}
+
+
+export function ReportModal({ resourceId = null, postType = '', onModel = 'Report', lightColor = "#FFF", darkColor = "#000" }: ModalBackgroundProps) {
+    const bgColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
+
     const [reportModal, setReportModal] = useState(false);
 
     const [rawFormData, setRawFormData] = useState({
@@ -17,7 +29,7 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
 
     const [btnText, setBtnText] = useState('Submit');
 
-    const sendReport = async (e: any) => {
+    const sendReport = async () => {
         setBtnText('...')
         const res = await fetchurl(`/reports/${resourceId}`, "POST", "no-cache", {
             ...rawFormData,
@@ -45,67 +57,62 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
 
   return (
     <>
-        <View style={styles.centeredView}>
-            <Modal
-                animationType='slide'
-                transparent={true}
-                visible={reportModal}
-                onRequestClose={() => {
-                    setReportModal(!reportModal);
-                }}
-            >
-                <TouchableWithoutFeedback onPress={() => {
-                    setReportModal(false)
-                    resetForm();
-                }}>
-                    <View style={styles.centeredView}>
-                        <TouchableWithoutFeedback>
-                            <View style={styles.modalView}>
-                                <ThemedText type='default' style={[styles.modalText]}>Report Object Id {resourceId}</ThemedText>
-                                <TextInput
-                                    style={[styles.formControl, styles.mb3]}
-                                    onChangeText={e => {
-                                        setRawFormData({
-                                            ...rawFormData,
-                                            title: e
-                                        });
-                                    }}
-                                    value={title}
-                                    placeholder='Title'
-                                    keyboardType='default'
-                                />
-                                <TextInput
-                                    style={[styles.formControl, styles.mb3]}
-                                    onChangeText={e => {
-                                    setRawFormData({
-                                        ...rawFormData,
-                                        text: e
-                                    })
-                                    }}
-                                    value={text}
-                                    placeholder='Here goes the message'
-                                    keyboardType="default"
-                                    multiline={true}
-                                    numberOfLines={4}
-                                />
-                                <View style={styles.fixToText}>
-                                    <Button title="Clear" onPress={resetForm} />
-                                    <Button title={btnText} onPress={sendReport} />
-                                </View>
-                            </View>
-                        </TouchableWithoutFeedback>
-                    </View>
-                </TouchableWithoutFeedback>
-            </Modal>
-        </View>
         <Pressable
-            style={{
-                backgroundColor: "#F2F2F2",
-            }}
             onPress={() => setReportModal(true)}
         >
-            <FontAwesomeIcon name='exclamation' size={15} />
+            <ThemedText type="default">Report!</ThemedText>
         </Pressable>
+        <Modal
+            animationType='slide'
+            transparent={true}
+            visible={reportModal}
+            onRequestClose={() => {
+                setReportModal(!reportModal);
+            }}
+        >
+            <TouchableWithoutFeedback onPress={() => {
+                setReportModal(false)
+                resetForm();
+            }}>
+                <View style={styles.centeredView}>
+                    <TouchableWithoutFeedback>
+                        <View style={[{ backgroundColor: bgColor }, styles.modalView]}>
+                            <ThemedText type='default' style={[styles.modalText]}>Report Object Id {resourceId}</ThemedText>
+                            <TextInput
+                                style={[styles.formControl, styles.mb3]}
+                                onChangeText={e => {
+                                    setRawFormData({
+                                        ...rawFormData,
+                                        title: e
+                                    });
+                                }}
+                                value={title}
+                                placeholder='Title'
+                                keyboardType='default'
+                            />
+                            <TextInput
+                                style={[styles.formControl, styles.mb3]}
+                                onChangeText={e => {
+                                setRawFormData({
+                                    ...rawFormData,
+                                    text: e
+                                })
+                                }}
+                                value={text}
+                                placeholder='Here goes the message'
+                                keyboardType="default"
+                                multiline={true}
+                                numberOfLines={4}
+                            />
+                            <View style={styles.fixToText}>
+                                <CustomButton title='Clear' onPress={resetForm} lightColor="#000" darkColor="#000" />
+                                <CustomButton title={btnText} onPress={sendReport} lightColor="#000" darkColor="#000" />
+                            </View>
+                        </View>
+                    </TouchableWithoutFeedback>
+                </View>
+            </TouchableWithoutFeedback>
+        </Modal>
     </>
   );
 };
@@ -118,7 +125,7 @@ const styles = StyleSheet.create({
       },
       modalView: {
         margin: 20,
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         borderRadius: 20,
         padding: 35,
         // alignItems: 'center',

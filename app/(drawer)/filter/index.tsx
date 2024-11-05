@@ -1,4 +1,4 @@
-import { Button, ScrollView, Switch, TextInput, View } from 'react-native';
+import { PixelRatio, ScrollView, Switch, TextInput, View } from 'react-native';
 import { Link, Stack, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import Dropdown from 'react-native-input-select';
@@ -9,6 +9,7 @@ import styles from '@/assets/style';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useThemeColor } from '@/hooks/useThemeColor';
+import { CustomButton } from '@/components/CustomButton';
 
 export default function FilterScreen() {
   const backgroundColor = useThemeColor({ light: "#FFF", dark: "#FFF" }, 'background');
@@ -52,12 +53,21 @@ export default function FilterScreen() {
     });
   }
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale; // Default font size of 16sp
+
   return (
     <>
       <Stack.Screen options={{
         headerShown: true,
         title: 'Filter',
         headerTitleAlign: 'left',
+        headerTitleStyle: {
+          fontSize: scaledFontSize, // Use scaled font size
+        },
         // headerLeft: () => <Text>Example Left</Text>,
         headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />
@@ -203,8 +213,8 @@ export default function FilterScreen() {
                 }}
               />
               <View style={[styles.fixToText, { marginBottom: 5 }]}>
-                <Button title='Clear' onPress={resetForm} />
-                <Button title={btnText} onPress={filterSecrets} />
+                <CustomButton title="Clear" onPress={resetForm} lightColor="#000" darkColor="#000" />
+                <CustomButton title={btnText} onPress={filterSecrets} lightColor="#000" darkColor="#000" />
               </View>
             </View>
           </ScrollView>

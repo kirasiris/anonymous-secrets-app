@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { PixelRatio, ScrollView, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Link, Stack } from 'expo-router';
 import { ThemedText } from '@/components/ThemedText';
@@ -37,12 +37,21 @@ export default function RuleScreen() {
     fetchPage();
   }, []);
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale;
+
   return (
     <>
       <Stack.Screen options={{
         headerShown: true,
         title: rulesPage.title,
         headerTitleAlign: 'left',
+        headerTitleStyle: {
+          fontSize: scaledFontSize, // Use scaled font size
+        },
         // headerLeft: () => <Text>Example Left</Text>,
         headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />
