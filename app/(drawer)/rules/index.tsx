@@ -16,6 +16,9 @@ export default function RuleScreen() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+
+    const abortController = new AbortController();
+
     const fetchPage = async () => {
       try {
         const res = await fetchurl(
@@ -23,7 +26,7 @@ export default function RuleScreen() {
           "GET", // method
           "default", // cache
           {}, // body
-          undefined, // signal
+          abortController.signal, // signal
           false, // multipart
           false // is remote
         );
@@ -34,7 +37,11 @@ export default function RuleScreen() {
         setLoading(false);
       }
     }
+
     fetchPage();
+
+    return () => abortController.abort();
+
   }, []);
 
   // Get the font scale factor
@@ -55,7 +62,7 @@ export default function RuleScreen() {
         // headerLeft: () => <Text>Example Left</Text>,
         headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />
-      <ThemedView style={{ height: '100%' }}>
+      <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           {loading ? <Loader /> : (
             rulesPage !== undefined && rulesPage !== null && rulesPage !== '' && (

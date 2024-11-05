@@ -76,7 +76,7 @@ export default function CreateScreen() {
           }
         }}
       />
-      <ThemedView style={{ height: '100%' }}>
+      <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           <View style={[styles.container]}>
             <ThemedText type="default" style={[styles.labelText]}>Name or Title</ThemedText>

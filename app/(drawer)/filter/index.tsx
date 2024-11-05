@@ -31,7 +31,15 @@ export default function FilterScreen() {
 
   const filterSecrets = async () => {
     setBtnText('...');
-    const res = await fetchurl(`/extras/secrets${params}${sex ? `&sex=${sex}` : ""}${age ? `&age[gte]=${Number(age)}` : ""}${secondaryage ? `&age[lte]=${Number(secondaryage)}` : ""}${nsfw ? `&nsfw=${nsfw}` : ""}${estate ? `&state=${estate}` : ""}`, "GET", "no-cache", {});
+    const res = await fetchurl(
+      `/extras/secrets${params}${sex ? `&sex=${sex}` : ""}${age ? `&age[gte]=${Number(age)}` : ""}${secondaryage ? `&age[lte]=${Number(secondaryage)}` : ""}${nsfw ? `&nsfw=${nsfw}` : ""}${estate ? `&state=${estate}` : ""}`, // url
+      "GET", // method
+      "no-cache", // cache
+      {}, // body
+      undefined, // signal
+      false, // multipart
+      false // is remote
+    );
     if(res.status === 'error') {
       Toast.error(res.message, 'bottom');
       setBtnText('Submit');
@@ -71,7 +79,7 @@ export default function FilterScreen() {
         // headerLeft: () => <Text>Example Left</Text>,
         headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />
-        <ThemedView style={{ height: '100%' }}>
+        <ThemedView style={{ flex: 1 }}>
           <ScrollView>
             <View style={[styles.container]}>
               <ThemedText type="default">From age</ThemedText>

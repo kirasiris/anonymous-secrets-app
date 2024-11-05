@@ -3,7 +3,7 @@ export const fetchurl = async (
 	method,
 	cache = "default",
 	bodyData,
-	signal = undefined,
+	signal = undefined || null || {},
 	multipart = false,
 	isRemote = false
 ) => {
@@ -33,6 +33,12 @@ export const fetchurl = async (
 		customHeaders[
 			"Content-Type"
 		] = `multipart/form-data; boundary=${data._boundary}`;
+	}
+
+	// If no signal is provided, create a new AbortController signal
+	if (signal !== undefined && signal !== null && signal !== ``) {
+		const controller = new AbortController();
+		signal = controller.signal;
 	}
 
 	const response = await fetch(

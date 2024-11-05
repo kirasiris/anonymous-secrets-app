@@ -26,7 +26,7 @@ export default function SearchScreen() {
           },
         }}
       />
-      <ThemedView style={{ height: '100%' }}>
+      <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           <View style={[styles.container]}>
             <ThemedText type="default" style={[styles.labelText]}>Enter ID and then click Enter</ThemedText>

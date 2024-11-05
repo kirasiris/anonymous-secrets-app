@@ -7,7 +7,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import { CustomButton } from './CustomButton';
 
 export type ModalBackgroundProps = BackgroundPropType & {
-    resourceId?: null;
+    resourceId?: string | null;
     postType?: string;
     onModel?: string;
     lightColor?: string;

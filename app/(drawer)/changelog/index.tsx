@@ -22,6 +22,9 @@ export default function ChangelogScreen() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+
+    const abortController = new AbortController();
+
     const fetchChangelogs = async (params = '') => {
       try {
         const res = await fetchurl(
@@ -29,7 +32,7 @@ export default function ChangelogScreen() {
           'GET', // method
           'default', // cache
           {}, // body
-          undefined, // signal
+          abortController.signal, // signal
           false, // multipart
           false // is remote
         );
@@ -53,7 +56,11 @@ export default function ChangelogScreen() {
         setLoading(false);
       }
     };
+
     fetchChangelogs(`?page=${page}&limit=${limit}&sort=${sort}&project=anonymous-secrets-app`);
+
+    return () => abortController.abort();
+
   }, [searchParams]);
 
   // Get the font scale factor
@@ -74,7 +81,7 @@ export default function ChangelogScreen() {
         // headerLeft: () => <Text>Example Left</Text>,
         headerRight: () =>  <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
       }} />
-        <ThemedView style={{ height: '100%' }}>
+        <ThemedView style={{ flex: 1 }}>
           <View style={[styles.container]}>
             <ThemedText type='subtitle' style={[styles.mb3]}>These are the changes the backend of the application receives</ThemedText>
           </View>

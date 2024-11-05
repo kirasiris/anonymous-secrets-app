@@ -22,6 +22,9 @@ export default function ReadScreen() {
   const params = useLocalSearchParams();
 
   useEffect(() => {
+
+    const abortController = new AbortController();
+
     const fetchSecret = async () => {
       try {
         const res = await fetchurl(
@@ -29,7 +32,7 @@ export default function ReadScreen() {
           "GET", // method
           'no-cache', // cache
           {}, // body
-          undefined, // signal
+          abortController.signal, // signal
           false, // multipart
           false // is remote
         );
@@ -49,7 +52,11 @@ export default function ReadScreen() {
         setLoading(false)
       }
     }
+    
     fetchSecret();
+
+    return () => abortController.abort();
+
   }, [params.id]);
 
   // Get the font scale factor
@@ -72,7 +79,7 @@ export default function ReadScreen() {
           headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={[styles.filterIcon]} /></Link>
         }}
       />
-      <ThemedView style={{ height: '100%' }}>
+      <ThemedView style={{ flex: 1 }}>
         <ScrollView>
             {loading ? <Loader /> : (
               secret !== undefined && secret !== null && secret !== '' && 

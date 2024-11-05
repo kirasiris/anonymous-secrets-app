@@ -28,7 +28,15 @@ export default function ContactScreen() {
 
   const sendEmail = async () => {
     setBtnText('...')
-    const res = await fetchurl(`/emails`, "POST", "no-cache", rawFormData)
+    const res = await fetchurl(
+      `/emails`, // url
+      "POST", // method
+      "no-cache", // cache
+      rawFormData, // body
+      undefined, // signal
+      false, // multipart
+      false // is remote
+    )
     if(res.status === 'error') {
       Toast.error(res.message, 'bottom');
       setBtnText('Submit');
@@ -66,7 +74,7 @@ export default function ContactScreen() {
           // headerLeft: () => <Text>Example Left</Text>,
           headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#000" darkColor="#FFF" style={styles.filterIcon} /></Link>
       }} />
-      <ThemedView style={{ height: '100%' }}>
+      <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           <View style={[styles.container]}>
             <ThemedText type="default" style={[styles.labelText]}>Name</ThemedText>

@@ -30,6 +30,9 @@ export default function HomeScreen() {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
+
+    const abortController = new AbortController();
+
     const fetchSecrets = async (params = '') => {
       try {
         const res = await fetchurl(
@@ -37,7 +40,7 @@ export default function HomeScreen() {
           'GET', // method
           'default', // cache
           {}, // body
-          undefined, // signal
+          abortController.signal, // signal
           false, // multipart
           false // is remote
         );
@@ -52,6 +55,8 @@ export default function HomeScreen() {
     };
     
     fetchSecrets(`?page=${page}&limit=${limit}&sort=${sort}${sex}${age}${secondaryage}${nsfw}${estate}&decrypt=true`);
+
+    return () => abortController.abort();
     
   }, [sex, age, secondaryage, nsfw, estate]);
 
@@ -84,7 +89,7 @@ export default function HomeScreen() {
         }}
       />
       <SearchBar lightColor="#FFF" darkColor="#FFF" />
-      <ThemedView style={{ height: '100%' }}>
+      <ThemedView style={{ flex: 1 }}>
       {loading ? <Loader /> : (
         secrets !== undefined && secrets !== null && secrets.length > 0 ? (
           <VirtualizedList

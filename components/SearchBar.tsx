@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { TextInput } from "react-native";
+import { TextInput, type TextInputProps } from "react-native";
 import { fetchurl } from "@/scripts/fetchurl";
 import { Toast } from "toastify-react-native";
 import { useRouter } from "expo-router";
 import styles from "@/assets/style";
-import { SearchBarProps } from "react-native-screens";
 import { useThemeColor } from "@/hooks/useThemeColor";
+
+export type SearchBarProps = TextInputProps & {
+    lightColor?: string;
+    darkColor?: string;
+}
 
 export function SearchBar({
     lightColor,
