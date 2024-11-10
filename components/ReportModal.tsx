@@ -60,7 +60,11 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
         <Pressable
             onPress={() => setReportModal(true)}
         >
-            <ThemedText type="default">Report!</ThemedText>
+            <ThemedText type="default" style={{
+                fontSize: 14,
+                color: "#1DA1F2",
+                marginHorizontal: 5
+            }}>Report!</ThemedText>
         </Pressable>
         <Modal
             animationType='slide'
@@ -77,7 +81,7 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
                 <View style={styles.centeredView}>
                     <TouchableWithoutFeedback>
                         <View style={[{ backgroundColor: bgColor }, styles.modalView]}>
-                            <ThemedText type='default' style={[styles.modalText]}>Report Object Id {resourceId}</ThemedText>
+                            <ThemedText type='default' style={[styles.modalText, {color: "#000"}]}>Report Object Id {resourceId}</ThemedText>
                             <TextInput
                                 style={[styles.formControl, styles.mb3]}
                                 onChangeText={e => {

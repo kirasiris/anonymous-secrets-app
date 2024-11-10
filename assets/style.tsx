@@ -33,9 +33,6 @@ const styles = StyleSheet.create({
         marginTop: 15,
         marginHorizontal: 15
     },
-    icon: {
-        padding: 10
-    },
     headerRightContainer: {
         flexDirection: 'row',
         alignItems: 'center',
@@ -55,9 +52,9 @@ const styles = StyleSheet.create({
     },
     // SINGLE
     flag: {
-        width: 30,
-        height: 15,
-        marginTop: 10
+        width: 20,
+        height: 10,
+        marginTop: 5
     },
     // 404 ERROR PAGE
     errorpage: {
@@ -93,55 +90,50 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginTop: 15
     },
-    // INDEX
-    postContainer: {
-        flexDirection: 'row',
-        padding: 10
-    },
-    leftContainer: {
-        marginRight: 10,
-        alignItems: 'center'
-    },
-    rightContainer: {
-        flex: 1
-    },
-    age: {
-        marginTop: 5,
-        fontWeight: 'bold'
-    },
-    content: {
-        fontSize: 16,
-        borderWidth: 1,
-        borderRadius: 0,
-        borderColor: "#CCCCCC",
-        padding: 5
-    },
-    nsfwcontent: {
-        fontSize: 16,
-        fontWeight: "600",
-        marginVertical: "auto",
-        textAlign: "center",
-        borderWidth: 1,
-        borderRadius: 0,
-        borderColor: "#CCCCCC",
-        padding: 5
-    },
-    footer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 1,
+    // SINGLE SECRET
+    card: {
+        padding: 10,
+        marginVertical: 5,
         borderBottomWidth: 1,
         borderBottomColor: "#CCCCCC"
     },
-    titleContainer: {
+    cardInfo: {
         flexDirection: 'row',
-        alignItems: 'center',
-        gap: 8
+        alignItems: 'center'
     },
-    stepContainer: {
-        gap: 8,
-        marginBottom: 8
-    }
+    cardDetails: {
+        flexDirection: 'column',
+        marginLeft: 10
+    },
+    cardTitle: {
+        fontWeight: 'bold',
+        fontSize: 15
+    },
+    cardSubtitle: {
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    cardText: {
+        fontSize: 14,
+        marginVertical: 10
+    },
+    nsfwCardText: {
+        fontWeight: "bold",
+        textAlign: "center",
+    },    
+    cardHandle: {
+        color: 'gray',
+        fontSize: 14
+    },
+    cardFooter: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+    cardIcon: {
+        flexDirection: 'row',
+        alignItems: 'center',        
+        padding: 10
+    },
 })
 
 export default styles;

@@ -1,32 +1,21 @@
-# Welcome to Anonymous Secrets App 👋
-
-<img src="assets/images/1.jpg" width="415"><img src="assets/images/2.jpg" width="415">
-<img src="assets/images/3.jpg" width="415"><img src="assets/images/4.jpg" width="415">
+# Welcome to Anonymous Secrets 👋
+<img src="assets/images/Feature graphic.png" alt="Preview of the homepage" width="830">
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Intro
+
+> Introducing Anonymous Secrets: a mobile app where users can share secrets freely and securely. With options to password-protect your messages and set a 24-hour expiration for added privacy, Anonymous Secrets ensures your confidential thoughts are shared only as long as you want. Join a community of trust, where secrets are kept safe and sound!
+
+Try **Anonymous Secrets**, a safe place to confess and share your deepest secrets anonymously with others
+
+## A bit of Background
+
+The word anonymous is usually linked to words like privacy, secrecy, confidentiality and such. Thus, Anonymous Secrets was born.
+
+The app's name embodies its promise: a trusted community where your deepest thoughts are kept secure, offering the freedom to express yourself fully without compromise.
+
 ## Getting Started
-
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
 ## Documentation
 
@@ -34,7 +23,7 @@ You can start developing by editing the files inside the **app** directory. This
 
 ## Contributing
 
-### Good First Issues:
+### Good First Issues
 
 ## Kevin's Web Author
 

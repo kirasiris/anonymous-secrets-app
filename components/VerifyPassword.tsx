@@ -1,11 +1,27 @@
 import React, { useState } from "react";
-import { Button, TextInput, View } from "react-native";
+import { TextInput, type TextInputProps, View } from "react-native";
 import styles from "@/assets/style";
 import { fetchurl } from "@/scripts/fetchurl";
 import { Toast } from "toastify-react-native";
 import { ThemedText } from "./ThemedText";
+import { CustomButton } from "./CustomButton";
+import { useThemeColor } from "@/hooks/useThemeColor";
 
-export function VerifyPassword({ objectId = '' , password = '', setObject = (data: any) => {} }) {
+export type VerifyPasswordProps = TextInputProps & {
+    objectId?: '',
+    password?: '',
+    lightColor?: string;
+    darkColor?: string;
+}
+
+export function VerifyPassword({
+    objectId = '' ,
+    password = '',
+    setObject = () => {},
+    lightColor,
+    darkColor
+}: VerifyPasswordProps) {
+    const backgroundColor = useThemeColor({ light: "#FFF", dark: "#FFF" }, 'background');
 
     const [rawFormData, setRawFormData] = useState({
         confirmsecretpassword: ''
@@ -45,7 +61,7 @@ export function VerifyPassword({ objectId = '' , password = '', setObject = (dat
     return  <View style={[styles.container]}>
                 <ThemedText type="default">This secret requires a password</ThemedText>
                 <TextInput
-                    style={[styles.formControl, styles.mb3]}
+                    style={[{ backgroundColor },styles.formControl, styles.mb3]}
                     onChangeText={e => {
                         setRawFormData({
                             ...rawFormData,
@@ -54,11 +70,12 @@ export function VerifyPassword({ objectId = '' , password = '', setObject = (dat
                     }}
                     value={confirmsecretpassword}
                     placeholder="Type password to reveal secret"
+                    keyboardType="default"
                     secureTextEntry={true}
                 />
                 <View style={[styles.fixToText]}>
-                    <Button title="Clear" onPress={resetForm} />
-                    <Button title={btnText} onPress={sendPassword} />
+                    <CustomButton title="Clear" onPress={resetForm} lightColor="#000" darkColor="#000" />
+                    <CustomButton title={btnText} onPress={sendPassword} lightColor="#000" darkColor="#000" />
                 </View>
             </View>
   
