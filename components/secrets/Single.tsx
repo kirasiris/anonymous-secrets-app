@@ -1,14 +1,23 @@
-import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, Button, Text } from 'react-native';
+import { Link } from 'expo-router';
+import * as Clipboard from 'expo-clipboard';
 import { ThemedText } from '../ThemedText';
 import { TabBarIcon } from '../navigation/TabBarIcon';
 import { calculateTimeSincePublished } from '@/scripts/calculatetimesincepublished';
 import { Flag } from '../Flag';
 import { ReportModal } from '../ReportModal';
 import styles from '@/assets/style';
-import { Link } from 'expo-router';
 
 export function Single({ object = {}, isSingle = true }) {
+
+    const copyId = async () => {
+      await Clipboard.setStringAsync(object._id);
+    };
+
+    const copyText = async () => {
+        await Clipboard.setStringAsync(object.text);
+    }
 
     return (
         <View style={styles.card}>
@@ -34,13 +43,16 @@ export function Single({ object = {}, isSingle = true }) {
                         <ThemedText type="default" style={styles.cardHandle}>{object.age}&nbsp;years&nbsp;old&nbsp;</ThemedText>
                         <ThemedText type="default" style={styles.cardHandle}>&nbsp;about&nbsp;{calculateTimeSincePublished(object.createdAt)}&nbsp;from&nbsp;{object.state}</ThemedText>
                     </View>
-                    <Flag flag={object.state} />
+                    <View style={styles.cardSubtitle}>
+                        <Flag flag={object.state} style={[{ marginRight: 5 }]} />
+                        <ThemedText type="default" style={[styles.cardHandle]} onPress={copyId}>Click me to copy Object Id</ThemedText>
+                    </View>
                 </View>
             </View>
             {/* TEXT */}
             {object.nsfw ? 
-            <ThemedText type="default" style={[styles.cardText, styles.nsfwCardText]}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</ThemedText> :
-            <ThemedText type="default" style={[styles.cardText]}>{object.text}</ThemedText>}
+            <ThemedText type="default" style={[styles.cardText, styles.nsfwCardText]} onLongPress={copyText}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</ThemedText> :
+            <ThemedText type="default" style={[styles.cardText]} onLongPress={copyText}>{object.text}</ThemedText>}
             {/* FOOTER */}
             <View style={styles.cardFooter}>
                 {isSingle && (
@@ -55,13 +67,22 @@ export function Single({ object = {}, isSingle = true }) {
                             type="default"
                             style={{
                                 fontSize: 14,
-                                color: "#1DA1F2",
-                                marginHorizontal: 5
+                                color: "#1DA1F2"
                             }}>
                                 Read&nbsp;More&nbsp;&gt;&gt;
                         </ThemedText>
                     </Link>            
                 )}
+                <TouchableOpacity style={[styles.cardIcon]} onPress={copyText}>
+                    <ThemedText
+                        type="default"
+                        style={{
+                            fontSize: 14,
+                            color: "#1DA1F2"
+                        }}>
+                            Copy Text
+                        </ThemedText>
+                </TouchableOpacity>
                 <TouchableOpacity style={[styles.cardIcon]}>
                     <ReportModal resourceId={object._id} postType="secret" onModel="Secret" lightColor="#FFF" darkColor="#FFF" />
                 </TouchableOpacity>

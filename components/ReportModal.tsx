@@ -60,11 +60,14 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
         <Pressable
             onPress={() => setReportModal(true)}
         >
-            <ThemedText type="default" style={{
-                fontSize: 14,
-                color: "#1DA1F2",
-                marginHorizontal: 5
-            }}>Report!</ThemedText>
+            <ThemedText
+                type="default"
+                style={{
+                    fontSize: 14,
+                    color: "#1DA1F2"
+                }}>
+                    Report!
+                </ThemedText>
         </Pressable>
         <Modal
             animationType='slide'
