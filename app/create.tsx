@@ -151,6 +151,9 @@ export default function CreateScreen() {
                   sex: e
                 })
               }}
+              dropdownStyle={{
+                borderRadius: 0
+              }}
             />
             <ThemedText type="default">State</ThemedText>
             <Dropdown
@@ -223,6 +226,9 @@ export default function CreateScreen() {
                   ...rawFormData,
                   state: e
                 })
+              }}
+              dropdownStyle={{
+                borderRadius: 0
               }}
               isSearchable={true}
             />        

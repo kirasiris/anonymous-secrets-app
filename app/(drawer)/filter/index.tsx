@@ -82,7 +82,7 @@ export default function FilterScreen() {
         <ThemedView style={{ flex: 1 }}>
           <ScrollView>
             <View style={[styles.container]}>
-              <ThemedText type="default">From age</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>From age</ThemedText>
               <TextInput
                 id='age'
                 style={[{ backgroundColor }, styles.formControl, styles.mb3]}
@@ -98,7 +98,7 @@ export default function FilterScreen() {
                 placeholder='13'
                 keyboardType="numeric"
               />
-              <ThemedText type="default">To age</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>To age</ThemedText>
               <TextInput
                 id='secondaryage'
                 style={[{ backgroundColor }, styles.formControl, styles.mb3]}
@@ -114,7 +114,7 @@ export default function FilterScreen() {
                 placeholder='99'
                 keyboardType="numeric"
               />
-              <ThemedText type="default">Sex</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>Sex</ThemedText>
               <Dropdown
                 label={undefined}
                 placeholder="Select an option..."
@@ -130,8 +130,11 @@ export default function FilterScreen() {
                     sex: e
                   })
                 }}
+                dropdownStyle={{
+                  borderRadius: 0
+                }}
               />
-              <ThemedText type="default">State</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>State</ThemedText>
               <Dropdown
                 label={undefined}
                 placeholder="Select an option..."
@@ -201,9 +204,12 @@ export default function FilterScreen() {
                     estate: e
                   })
                 }}
+                dropdownStyle={{
+                  borderRadius: 0
+                }}
                 isSearchable={true}
               />
-              <ThemedText type="default">NSFW</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>NSFW</ThemedText>
               <Switch
                 id='nsfw'
                 trackColor={{

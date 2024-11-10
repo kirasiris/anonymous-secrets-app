@@ -105,9 +105,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         marginLeft: 10
     },
+    cardTitleContainer: {
+        flexDirection: 'row', // important for wrapping
+        flexWrap: 'wrap', // allows wrapping of text
+        width: 300
+    },
     cardTitle: {
         fontWeight: 'bold',
-        fontSize: 15
+        fontSize: 15,
     },
     cardSubtitle: {
         flexDirection: 'row',

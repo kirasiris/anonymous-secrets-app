@@ -120,6 +120,9 @@ export default function ContactScreen() {
                   subject: e
                 })
               }}
+              dropdownStyle={{
+                borderRadius: 0
+              }}
             />
             <ThemedText type="default" style={[styles.labelText]}>Message</ThemedText>
             <TextInput

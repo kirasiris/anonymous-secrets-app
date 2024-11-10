@@ -1,6 +1,8 @@
 # Welcome to Anonymous Secrets 👋
 <img src="assets/images/Feature graphic.png" alt="Preview of the homepage" width="830">
 
+> Image built with Hotspot.ai
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
 ## Intro

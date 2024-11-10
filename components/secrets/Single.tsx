@@ -9,6 +9,7 @@ import styles from '@/assets/style';
 import { Link } from 'expo-router';
 
 export function Single({ object = {}, isSingle = true }) {
+
     return (
         <View style={styles.card}>
             {/* User info section */}
@@ -23,8 +24,11 @@ export function Single({ object = {}, isSingle = true }) {
                         href={{
                             pathname: `/read/${object._id}`,
                             // params: {}
-                    }}>
-                        <ThemedText type="subtitle" style={styles.cardTitle}>{object.title}</ThemedText>
+                        }}
+                        >
+                            <View style={[styles.cardTitleContainer]}>
+                                <ThemedText style={[styles.cardTitle]}>{object.title}</ThemedText>
+                            </View>
                     </Link>
                     <View style={styles.cardSubtitle}>
                         <ThemedText type="default" style={styles.cardHandle}>{object.age}&nbsp;years&nbsp;old&nbsp;</ThemedText>
