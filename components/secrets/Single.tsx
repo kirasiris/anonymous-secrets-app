@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Button, Text } from 'react-native';
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
 import { Link } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import { ThemedText } from '../ThemedText';
@@ -20,15 +20,15 @@ export function Single({ object = {}, isSingle = true }) {
     }
 
     return (
-        <View style={styles.card}>
+        <View style={[styles.card]}>
             {/* User info section */}
-            <View style={styles.cardInfo}>
+            <View style={[styles.cardInfo]}>
                 {/* SEX */}
                 {object.sex === 'male' && <TabBarIcon name='male' color="#2e6889" />}
                 {object.sex === 'female' && <TabBarIcon name='female' color="#a23d63" />}
                 {object.sex === 'non-binary' && <TabBarIcon name='male-female' color="#000000" />}
                 {/* DETAILS */}
-                <View style={styles.cardDetails}>
+                <View style={[styles.cardDetails]}>
                     <Link
                         href={{
                             pathname: `/read/${object._id}`,
@@ -39,18 +39,18 @@ export function Single({ object = {}, isSingle = true }) {
                                 <ThemedText style={[styles.cardTitle]}>{object.title}</ThemedText>
                             </View>
                     </Link>
-                    <View style={styles.cardSubtitle}>
-                        <ThemedText type="default" style={styles.cardHandle}>{object.age}&nbsp;years&nbsp;old&nbsp;</ThemedText>
-                        <ThemedText type="default" style={styles.cardHandle}>&nbsp;about&nbsp;{calculateTimeSincePublished(object.createdAt)}&nbsp;from&nbsp;{object.state}</ThemedText>
+                    <View style={[styles.cardSubtitle]}>
+                        <ThemedText type="default" style={[styles.cardHandle]}>{object.age}&nbsp;years&nbsp;old&nbsp;</ThemedText>
+                        <ThemedText type="default" style={[styles.cardHandle]}>&nbsp;about&nbsp;{calculateTimeSincePublished(object.createdAt)}&nbsp;from&nbsp;{object.state}</ThemedText>
                     </View>
-                    <View style={styles.cardSubtitle}>
+                    <View style={[styles.cardSubtitle]}>
                         <Flag flag={object.state} style={[{ marginRight: 5 }]} />
                         <ThemedText type="default" style={[styles.cardHandle]} onPress={copyId}>Click me to copy Object Id</ThemedText>
                     </View>
                 </View>
             </View>
             {/* TEXT */}
-            {object.nsfw ? 
+            {object.nsfw && isSingle ? 
             <ThemedText type="default" style={[styles.cardText, styles.nsfwCardText]} onLongPress={copyText}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</ThemedText> :
             <ThemedText type="default" style={[styles.cardText]} onLongPress={copyText}>{object.text}</ThemedText>}
             {/* FOOTER */}
@@ -65,10 +65,10 @@ export function Single({ object = {}, isSingle = true }) {
                     >
                         <ThemedText
                             type="default"
-                            style={{
+                            style={[{
                                 fontSize: 14,
                                 color: "#1DA1F2"
-                            }}>
+                            }]}>
                                 Read&nbsp;More&nbsp;&gt;&gt;
                         </ThemedText>
                     </Link>            
@@ -76,10 +76,10 @@ export function Single({ object = {}, isSingle = true }) {
                 <TouchableOpacity style={[styles.cardIcon]} onPress={copyText}>
                     <ThemedText
                         type="default"
-                        style={{
+                        style={[{
                             fontSize: 14,
                             color: "#1DA1F2"
-                        }}>
+                        }]}>
                             Copy Text
                         </ThemedText>
                 </TouchableOpacity>

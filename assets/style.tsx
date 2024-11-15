@@ -36,14 +36,14 @@ const styles = StyleSheet.create({
     headerRightContainer: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginRight: 10,
+        marginRight: 11,
     },
     leftButton: {
-        marginHorizontal: 11,
+        marginLeft: 11,
         color: "#FFFFFF"
     },
     rightButton: {
-        marginHorizontal: 11,
+        marginLeft: 11,
         color: "#FFFFFF"
     },
     link: {

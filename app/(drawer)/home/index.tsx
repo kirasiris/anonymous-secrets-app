@@ -1,8 +1,7 @@
-import {  VirtualizedList, View, ActivityIndicator, PixelRatio } from 'react-native';
+import {  VirtualizedList, View, ActivityIndicator, PixelRatio, RefreshControl } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import { ThemedText } from '@/components/ThemedText';
 import { Loader } from '@/components/Loader';
@@ -72,6 +71,32 @@ export default function HomeScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale; // Default font size of 16sp
 
+
+  // Refresh secrets
+  // const [refreshingSecrets, setRefreshing] = useState(false);
+
+  // const onRefreshing = async (params = '') => {
+  //   setRefreshing(true);
+  //   try {
+  //     const res = await fetchurl(
+  //       `/extras/secrets${params}`.replace(/&_=\d+/, ''), // url
+  //       'GET', // method
+  //       'default', // cache
+  //       {}, // body
+  //       undefined, // signal
+  //       false, // multipart
+  //       false // is remote
+  //     );
+
+  //     setSecrets(res.data);
+
+  //   } catch (err) {
+  //     console.log('Error refreshing secrets:', err);
+  //   } finally {
+  //     setRefreshing(false);
+  //   }
+  // }
+
   return (
     <>
       <Stack.Screen
@@ -99,16 +124,23 @@ export default function HomeScreen() {
             keyExtractor={(item) => item._id.toString()}
             getItemCount={getItemCount}
             getItem={getItem}
+            // refreshControl={
+            //   <RefreshControl refreshing={refreshingSecrets} onRefresh={onRefreshing} />
+            // }
           />
         ) : (
-          <View style={[styles.postContainer]}>
-            <View style={[styles.leftContainer]}>
-              <TabBarIcon name='male' color="#2e6889" />
-              <ThemedText type="default" style={[styles.age]}>ADMIN</ThemedText>
+          <View style={styles.card}>
+            {/* User info section */}
+            <View style={styles.cardInfo}>
+              {/* HERE GOES THE SEX */}
+              {/* DETAILS */}
+              <View style={styles.cardDetails}>
+                <View style={styles.cardTitleContainer}>
+                  <ThemedText style={[styles.cardTitle]}>ADMIN</ThemedText>
+                </View>
+              </View>
             </View>
-            <View style={[styles.rightContainer]}>
-              <ThemedText type="default" style={[styles.content]}>NO SECRETS YET</ThemedText>
-            </View>
+            <ThemedText type="default" style={[styles.cardText]}>NO SECRETS YET</ThemedText>
           </View>
         )
       )}

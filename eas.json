@@ -1,30 +1,31 @@
 {
-  "cli": {
-    "version": ">= 12.6.0",
-    "appVersionSource": "remote"
-  },
-  "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal"
+    "cli": {
+      "version": ">= 12.6.0",
+      "appVersionSource": "remote"
     },
-    "preview": {
-      "distribution": "internal"
-    },
-    "production": {
-      "autoIncrement": true,
-      "env": {
-        "EXPO_PUBLIC_API_URL": "https://befree.herokuapp.com/api/v1",
-        "EXPO_PUBLIC_RULES_PAGE_ID": "6715785421821abe135c456a",
-        "EXPO_PUBLIC_RULES_PAGE_SLUG": "rules",
-        "EXPO_PUBLIC_APP_EMAIL": "kuaf1998@gmail.com"
+    "build": {
+      "development": {
+        "developmentClient": true,
+        "distribution": "internal"
       },
-      "android": {
-        "image": "latest"
+      "preview": {
+        "distribution": "internal"
+      },
+      "production": {
+        "autoIncrement": true,
+        "env": {
+          "EXPO_PUBLIC_API_URL": "https://befree.herokuapp.com/api/v1",
+          "EXPO_PUBLIC_RULES_PAGE_ID": "6715785421821abe135c456a",
+          "EXPO_PUBLIC_RULES_PAGE_SLUG": "rules",
+          "EXPO_PUBLIC_APP_EMAIL": "kuaf1998@gmail.com"
+        },
+        "android": {
+          "image": "latest"
+        }
       }
+    },
+    "submit": {
+      "production": {}
     }
-  },
-  "submit": {
-    "production": {}
   }
-}
+  
