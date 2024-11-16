@@ -1,7 +1,7 @@
 {
   "name": "anonymous-secrets-app",
-  "version": "15.0.0",
-  "description": "Anonymous Secrets App is an improved and better clone of TuSecreto.io for English speakers",
+  "version": "16.0.0",
+  "description": "Confess & share your deepest secrets anonymously with others!",
   "private": false,
   "scripts": {
     "start": "expo start",

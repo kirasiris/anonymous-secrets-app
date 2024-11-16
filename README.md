@@ -5,6 +5,8 @@
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+You can now download the app via the [Google Play Store](https://play.google.com/store/apps/details?id=com.kirasiris.anonymoussecretsapp)
+
 ## Intro
 
 > Introducing Anonymous Secrets: a mobile app where users can share secrets freely and securely. With options to password-protect your messages and set a 24-hour expiration for added privacy, Anonymous Secrets ensures your confidential thoughts are shared only as long as you want. Join a community of trust, where secrets are kept safe and sound!

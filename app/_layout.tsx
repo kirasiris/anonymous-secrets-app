@@ -34,7 +34,7 @@ export default function RootLayout() {
         <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
-      {/* <StatusBar style="auto" /> */}
+      <StatusBar style="auto" />
       <ToastManager />
     </ThemeProvider>
   );
