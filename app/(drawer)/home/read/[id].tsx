@@ -10,7 +10,7 @@ import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { Single } from '@/components/secrets/Single';
 
-export default function ReadScreen() {
+export default function ReadSecretScreen() {
   const router = useRouter();
 
   const [secret, setSecret] = useState<any>({});
@@ -79,7 +79,7 @@ export default function ReadScreen() {
         <ScrollView>
             {loading ? <Loader /> : (
               secret !== undefined && secret !== null && secret !== '' && 
-              secret.password !== undefined && secret.password !== null && secret.password !== '' ? <VerifyPassword objectId={params.id} password={secret.password} setObject={setSecret} /> : <Single object={secret} isSingle={false} />
+              secret.password !== undefined && secret.password !== null && secret.password !== '' ? <VerifyPassword objectId={params.id} password={secret.password} setObject={setSecret} /> : <Single object={secret} isSingle={true} />
             )}
         </ScrollView>
       </ThemedView>

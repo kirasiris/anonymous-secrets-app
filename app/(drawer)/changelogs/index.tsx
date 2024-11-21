@@ -10,7 +10,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { ParseHtml } from '@/components/ParseHtml';
 
 
-export default function ChangelogScreen() {
+export default function ChangelogsScreen() {
 
   const searchParams = useGlobalSearchParams();
 
@@ -37,7 +37,7 @@ export default function ChangelogScreen() {
           false // is remote
         );
 
-        const groupByDate = res?.data.reduce((groups: any[], changelog: any) => {
+        const groupByDate = res?.data?.reduce((groups: any[], changelog: any) => {
           const date = changelog.createdAt.split("T")[0];
           const existingGroup = groups.find(group => group.title === date);
           if (!existingGroup) {
@@ -94,7 +94,7 @@ export default function ChangelogScreen() {
                   sections={changelogs}
                   keyExtractor={(item) => item._id.toString()}
                   renderItem={({ item }) => 
-                    <View style={[styles.container]}>
+                    <View key={item._id} style={[styles.container]}>
                       <ParseHtml text={item.text} />
                     </View>
                   }

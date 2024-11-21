@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity } from 'react-native';
+import { View, TouchableOpacity, Alert, Share } from 'react-native';
 import { Link } from 'expo-router';
 import * as Clipboard from 'expo-clipboard';
 import { ThemedText } from '../ThemedText';
@@ -10,6 +10,25 @@ import { ReportModal } from '../ReportModal';
 import styles from '@/assets/style';
 
 export function Single({ object = {}, isSingle = true }) {
+
+    const shareSecret = async () => {
+        try {
+            const res = await Share.share({
+                message: `${process.env.EXPO_PUBLIC_OWNER_URL}/secret/${object._id}`
+            });
+            if(res.action === Share.sharedAction) {
+                if(res.activityType) {
+                    // shared with activity type of res.activityType
+                } else {
+                    // shared
+                }
+            } else if (res.action === Share.dismissedAction) {
+                // dimissed
+            }
+        } catch (err) {
+            Alert.alert(err.message);
+        }
+    }
 
     const copyId = async () => {
       await Clipboard.setStringAsync(object._id);
@@ -31,7 +50,7 @@ export function Single({ object = {}, isSingle = true }) {
                 <View style={[styles.cardDetails]}>
                     <Link
                         href={{
-                            pathname: `/read/${object._id}`,
+                            pathname: `/home/read/${object._id}`,
                             // params: {}
                         }}
                         >
@@ -50,15 +69,60 @@ export function Single({ object = {}, isSingle = true }) {
                 </View>
             </View>
             {/* TEXT */}
-            {object.nsfw && isSingle ? 
-            <ThemedText type="default" style={[styles.cardText, styles.nsfwCardText]} onLongPress={copyText}>THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...</ThemedText> :
-            <ThemedText type="default" style={[styles.cardText]} onLongPress={copyText}>{object.text}</ThemedText>}
+            {/* Display it on index page if NSFW */}
+            {object.nsfw && !isSingle && (
+                <ThemedText
+                    type="default"
+                    style={[styles.cardText, styles.nsfwCardText]}
+                >
+                    THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...
+                </ThemedText>
+            )}
+            {/* Full NSFW content on single page */}
+            {object.nsfw && isSingle && (
+                <ThemedText
+                    type="default"
+                    style={[styles.cardText]}
+                    onLongPress={copyText}
+                >
+                    {object.text}
+                </ThemedText>
+            )}
+            {/* Password-protected message on index page */}
+            {object.password && !isSingle && (
+                <ThemedText
+                    type="default"
+                    style={[styles.cardText]}
+                >
+                    This secret requires a password lol
+                </ThemedText>
+            )}
+            {/* Display text if SFW and not password-protected */}
+            {!object.nsfw && !object.password && !isSingle && (
+                <ThemedText
+                    type="default"
+                    style={[styles.cardText]}
+                    onLongPress={copyText}
+                >
+                    {object.text}
+                </ThemedText>
+            )}
+            {/* Display text if SFW and not password-protected */}
+            {!object.nsfw && !object.password && isSingle && (
+                <ThemedText
+                    type="default"
+                    style={[styles.cardText]}
+                    onLongPress={copyText}
+                >
+                    {object.text}
+                </ThemedText>
+            )}
             {/* FOOTER */}
             <View style={styles.cardFooter}>
-                {isSingle && (
+                {!isSingle && (
                     <Link
                         href={{
-                            pathname: `/read/${object._id}`,
+                            pathname: `/home/read/${object._id}`,
                             // params: {}
                         }}
                         style={[styles.cardIcon]}
@@ -73,6 +137,17 @@ export function Single({ object = {}, isSingle = true }) {
                         </ThemedText>
                     </Link>            
                 )}
+                <TouchableOpacity style={[styles.cardIcon]} onPress={shareSecret}>
+                    <ThemedText
+                        type="default"
+                        style={[{
+                            fontSize: 14,
+                            color: "#1DA1F2"
+                        }]}
+                    >
+                        Share
+                    </ThemedText>
+                </TouchableOpacity>
                 <TouchableOpacity style={[styles.cardIcon]} onPress={copyText}>
                     <ThemedText
                         type="default"

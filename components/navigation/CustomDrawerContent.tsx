@@ -1,4 +1,4 @@
-import { View, Pressable, Alert, Share, Button } from 'react-native'
+import { View, Alert, Share } from 'react-native'
 import React from 'react'
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -63,22 +63,7 @@ export default function CustomDrawerContent(props:any) {
                             <ThemedText type="link">GitHub</ThemedText>
                     </ExternalLink>
                 </View>
-                {/* <Pressable
-                    style={[{
-                        paddingHorizontal: 10
-                    }]}
-                >
-                    <ThemedText type="link">Terms of Service</ThemedText>
-                </Pressable>
-                <Pressable
-                    style={[{
-                        paddingHorizontal: 10,
-                        paddingBottom: bottom + 10
-                    }]}
-                >
-                    <ThemedText type="link">Privacy Policy</ThemedText>
-                </Pressable> */}
-                <ThemedText type="default">v16.0.0 by
+                <ThemedText type="default">{process.env.EXPO_PUBLIC_APP_VERSION} by
                     <ExternalLink href="https://kevinfonseca.vercel.app/">
                         <ThemedText type="link"> Kevin</ThemedText>
                     </ExternalLink>

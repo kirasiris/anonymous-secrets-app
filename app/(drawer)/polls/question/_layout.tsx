@@ -1,6 +1,6 @@
 import React from "react";
 import { Stack } from "expo-router";
 
-export default function ReadLayout() {
+export default function ReadQuestionLayout() {
   return <Stack />;
 }

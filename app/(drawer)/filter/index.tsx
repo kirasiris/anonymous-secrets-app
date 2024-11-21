@@ -34,7 +34,7 @@ export default function FilterScreen() {
     const res = await fetchurl(
       `/extras/secrets${params}${sex ? `&sex=${sex}` : ""}${age ? `&age[gte]=${Number(age)}` : ""}${secondaryage ? `&age[lte]=${Number(secondaryage)}` : ""}${nsfw ? `&nsfw=${nsfw}` : ""}${estate ? `&state=${estate}` : ""}`, // url
       "GET", // method
-      "no-cache", // cache
+      "default", // cache
       {}, // body
       undefined, // signal
       false, // multipart

@@ -31,7 +31,7 @@ export default function ContactScreen() {
     const res = await fetchurl(
       `/emails`, // url
       "POST", // method
-      "no-cache", // cache
+      "default", // cache
       rawFormData, // body
       undefined, // signal
       false, // multipart

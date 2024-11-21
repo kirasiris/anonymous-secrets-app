@@ -10,7 +10,7 @@ import { formatDateWithoutTime } from '@/scripts/formatdatewithoutime';
 import { ThemedView } from '@/components/ThemedView';
 import { ParseHtml } from '@/components/ParseHtml';
 
-export default function RuleScreen() {
+export default function RulesScreen() {
 
   const [rulesPage, setRulesPage] = useState<any>({});
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +24,7 @@ export default function RuleScreen() {
         const res = await fetchurl(
           `/pages/${process.env.EXPO_PUBLIC_RULES_PAGE_ID}`, // url
           "GET", // method
-          "default", // cache
+          "no-cache", // cache
           {}, // body
           abortController.signal, // signal
           false, // multipart

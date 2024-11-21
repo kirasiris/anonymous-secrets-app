@@ -1,4 +1,4 @@
-import {  VirtualizedList, View, ActivityIndicator, PixelRatio, RefreshControl } from 'react-native';
+import {  VirtualizedList, View, PixelRatio } from 'react-native';
 import { Link, Stack, useGlobalSearchParams } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import { fetchurl } from '@/scripts/fetchurl';
@@ -15,7 +15,7 @@ export default function HomeScreen() {
   const searchParams = useGlobalSearchParams();
 
   const page = searchParams.page || 1;
-  const limit = searchParams.limit || 0;
+  const limit = searchParams.limit || 50;
   const sort = searchParams.sort || "-createdAt"
   const sex = searchParams.sex ? `&sex=${searchParams.sex}` : "";
   const age = searchParams.age ? `&age[gte]=${searchParams.age}` : "";
@@ -51,7 +51,7 @@ export default function HomeScreen() {
       }
     };
     
-    fetchSecrets(`?page=${page}&limit=${limit}&sort=${sort}${sex}${age}${secondaryage}${nsfw}${estate}&decrypt=true`);
+    fetchSecrets(`?page=${page}&limit=${limit}&sort=${sort}${sex}${age}${secondaryage}${nsfw}${estate}&decrypt=true&select=+title,+slug,+text,+password,+age,+sex,+state,+nsfw,+deletable,+commented,+tags,+status,+createdAt,+updatedAt`);
     
     return () => abortController.abort();
     
@@ -61,41 +61,11 @@ export default function HomeScreen() {
 
   const getItemCount = (data: any[]) => data.length;
 
-  if(loading) {
-    return  <ActivityIndicator size="large" color="#0000FF" />
-  }
-
   // Get the font scale factor
   const scale = PixelRatio.getFontScale();
 
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale; // Default font size of 16sp
-
-
-  // Refresh secrets
-  // const [refreshingSecrets, setRefreshing] = useState(false);
-
-  // const onRefreshing = async (params = '') => {
-  //   setRefreshing(true);
-  //   try {
-  //     const res = await fetchurl(
-  //       `/extras/secrets${params}`.replace(/&_=\d+/, ''), // url
-  //       'GET', // method
-  //       'default', // cache
-  //       {}, // body
-  //       undefined, // signal
-  //       false, // multipart
-  //       false // is remote
-  //     );
-
-  //     setSecrets(res.data);
-
-  //   } catch (err) {
-  //     console.log('Error refreshing secrets:', err);
-  //   } finally {
-  //     setRefreshing(false);
-  //   }
-  // }
 
   return (
     <>
@@ -119,14 +89,11 @@ export default function HomeScreen() {
             data={secrets}
             initialNumToRender={50}
             renderItem={({item}) => (
-              <Single key={item._id} object={item} />
+              <Single key={item._id} object={item} isSingle={false} />
             )}
             keyExtractor={(item) => item._id.toString()}
             getItemCount={getItemCount}
             getItem={getItem}
-            // refreshControl={
-            //   <RefreshControl refreshing={refreshingSecrets} onRefresh={onRefreshing} />
-            // }
           />
         ) : (
           <View style={styles.card}>

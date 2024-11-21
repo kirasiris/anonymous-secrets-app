@@ -2,17 +2,13 @@ import React from 'react';
 import { Drawer } from 'expo-router/drawer';
 import 'react-native-reanimated';
 import { Link } from 'expo-router';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import styles from '@/assets/style';
 import CustomDrawerContent from '@/components/navigation/CustomDrawerContent';
 import { DrawerToggleButton } from '@react-navigation/drawer';
 
 export default function DrawerLayout() {
-
-  const navigation  = useNavigation();
 
   return (
     <Drawer
@@ -55,7 +51,14 @@ export default function DrawerLayout() {
         }}
       />
       <Drawer.Screen
-        name='changelog'
+        name='polls'
+        options={{
+          drawerLabel: 'Polls',
+          title: 'Polls'
+        }}
+      />
+      <Drawer.Screen
+        name='changelogs'
         options={{
           drawerLabel: 'Changelog',
           title: 'Changelog'
@@ -65,14 +68,7 @@ export default function DrawerLayout() {
         name='contact'
         options={{
           drawerLabel: 'Contact',
-          title: 'Changelog'
-        }}
-      />
-      <Drawer.Screen
-        name='read'
-        options={{
-          headerShown: true,
-          drawerItemStyle: { display: 'none' } // This hides the menu item
+          title: 'Contact'
         }}
       />
     </Drawer>

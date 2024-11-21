@@ -42,7 +42,7 @@ export default function CreateScreen() {
     Toast.success('Secret created', 'bottom');
     resetForm();
     setBtnText('Submit');
-    router.push(`/read/${res?.data?._id}`);
+    router.push(`/home/read/${res?.data?._id}`);
   }
 
   const resetForm = () => {
@@ -264,7 +264,7 @@ export default function CreateScreen() {
                 })
               }}
             />
-            <View style={[styles.fixToText, { marginBottom: 65 }]}>
+            <View style={[styles.fixToText, { marginBottom: 5 }]}>
               <CustomButton title="Clear" onPress={resetForm} lightColor="#000" darkColor="#000" />
               <CustomButton title={btnText} onPress={sendSecret} lightColor="#000" darkColor="#000" />
             </View>
