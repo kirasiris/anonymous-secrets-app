@@ -67,6 +67,10 @@ export default function HomeScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale; // Default font size of 16sp
 
+  // Prevent going back -- This is a hack to solve the "The specified child already has a parent. You must use removeView() in the parent component first." issue
+  // Not at all recommended for the long run
+  // To delete once a better solution is available or once react-navagation solves it.
+
   return (
     <>
       <Stack.Screen

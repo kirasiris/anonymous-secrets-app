@@ -47,7 +47,7 @@ export function SearchBar({
         Toast.success('Secret found', 'bottom');
         resetForm();
         setBtnText('Submit');
-        router.push(`/read/${res?.data?._id}`);
+        router.push(`/home/read/${res?.data?._id}`);
     }
 
     const resetForm = () => {

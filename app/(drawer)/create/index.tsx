@@ -1,4 +1,4 @@
-import { ScrollView, Switch, TextInput, View } from 'react-native';
+import { PixelRatio, ScrollView, Switch, TextInput, View } from 'react-native';
 import { Link, Stack, useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import Dropdown from 'react-native-input-select';
@@ -58,6 +58,12 @@ export default function CreateScreen() {
     });
   }
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale;
+
 
   return (
     <>
@@ -65,15 +71,12 @@ export default function CreateScreen() {
         options={{
           headerShown: true,
           title: 'Create',
-          headerTitleAlign: 'center',
-          headerLeft: () => <Link href={`/`} style={[styles.filterIcon, { color: '#FFF' } ]}>Home</Link>,
-          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#FFF" darkColor="#FFF"style={[styles.filterIcon]} /></Link>,
-          headerStyle: {
-            backgroundColor: '#0163D2'
-          },
+          headerTitleAlign: 'left',
           headerTitleStyle: {
-            color: '#FFFFFF'
-          }
+            fontSize: scaledFontSize, // Use scaled font size
+          },
+          // headerLeft: () => <Link href={`/`} style={[styles.filterIcon, { color: '#FFF' } ]}>Home</Link>,
+          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#FFF" darkColor="#FFF"style={[styles.filterIcon]} /></Link>,
         }}
       />
       <ThemedView style={{ flex: 1 }}>

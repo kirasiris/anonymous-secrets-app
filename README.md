@@ -1,4 +1,4 @@
-# Welcome to Anonymous Secrets 👋
+# Welcome to Anonymous Secrets
 <img src="assets/images/Feature graphic.png" alt="Preview of the homepage" width="830">
 
 > Image built with Hotspot.ai

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, View} from 'react-native';
+import { PixelRatio, ScrollView, View} from 'react-native';
 import { Link, Stack } from 'expo-router';
 import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import styles from '@/assets/style';
@@ -9,21 +9,23 @@ import { SearchBar } from '@/components/SearchBar';
 
 export default function SearchScreen() {
 
+  // Get the font scale factor
+  const scale = PixelRatio.getFontScale();
+
+  // Define a font size based on scale factor
+  const scaledFontSize = 16 * scale;    
+
   return (
     <>
       <Stack.Screen
         options={{
           headerShown: true,
           title: 'Search',
-          headerTitleAlign: 'center',
-          headerLeft: () => <Link href={`/`} style={[styles.filterIcon, { color: '#FFF' }]}>Home</Link>,
-          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#FFF" darkColor="#FFF" style={[styles.filterIcon]} /></Link>,
-          headerStyle: {
-            backgroundColor: '#0163D2'
-          },
+          headerTitleAlign: 'left',
           headerTitleStyle: {
-            color: "#FFFFFF",
+            fontSize: scaledFontSize
           },
+          headerRight: () => <Link href={`/filter`}><FontAwesomeIcon name='filter' lightColor="#FFF" darkColor="#FFF" style={[styles.filterIcon]} /></Link>,
         }}
       />
       <ThemedView style={{ flex: 1 }}>

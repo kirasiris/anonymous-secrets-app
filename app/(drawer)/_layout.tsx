@@ -19,7 +19,7 @@ export default function DrawerLayout() {
         headerTitleAlign: "center",
         headerLeft: () => <DrawerToggleButton tintColor="#FFF" />,
         headerRight: () =>  <View style={styles.headerRightContainer}>
-                              <Link href={`/search`}><FontAwesomeIcon name='search' lightColor="#FFF" darkColor="#FFF" /></Link>
+                              <Link href="/search"><FontAwesomeIcon name='search' lightColor="#FFF" darkColor="#FFF" /></Link>
                               <Link href="/create" style={[styles.rightButton, styles.btn, styles.btnOutlineLight, {color: '#FFF'}]}>New</Link>
                             </View>,
         headerStyle: {
@@ -69,6 +69,22 @@ export default function DrawerLayout() {
         options={{
           drawerLabel: 'Contact',
           title: 'Contact'
+        }}
+      />
+      <Drawer.Screen
+        name='search'
+        options={{
+          drawerLabel: 'Search',
+          title: 'Search',
+          drawerItemStyle: { display: 'none' }
+        }}
+      />
+      <Drawer.Screen
+        name='create'
+        options={{
+          drawerLabel: 'Create',
+          title: 'Create',
+          drawerItemStyle: { display: 'none' }
         }}
       />
     </Drawer>

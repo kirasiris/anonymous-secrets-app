@@ -9,6 +9,7 @@ import { VerifyPassword } from '@/components/VerifyPassword';
 import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { Single } from '@/components/secrets/Single';
+import { ThemedText } from '@/components/ThemedText';
 
 export default function ReadSecretScreen() {
   const router = useRouter();
