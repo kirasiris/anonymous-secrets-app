@@ -1,6 +1,6 @@
 {
   "name": "anonymous-secrets-app",
-  "version": "18.0.0",
+  "version": "20.0.0",
   "description": "Confess & share your deepest secrets anonymously with others!",
   "private": false,
   "scripts": {

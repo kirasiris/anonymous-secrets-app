@@ -27,7 +27,19 @@ The app's name embodies its promise: a trusted community where your deepest thou
 
 ## Contributing
 
+Hello, everyone if you guys want to participate by testing out features that might come up in the future releases, please join this Google Group
+
+[Anonymous Secrets](https://groups.google.com/g/anonymous-secrets-app).
+
+Secondly you guys can download the App's testing version before production, you can download it via Android or Web:
+
+[Android](https://play.google.com/store/apps/details?id=com.kirasiris.anonymoussecretsapp)
+
+[Web](https://play.google.com/apps/testing/com.kirasiris.anonymoussecretsapp)
+
 ### Good First Issues
+
+I currently have a list with a good first issue that contains a [bug](https://github.com/kirasiris/anonymous-secrets-app/issues/1) that have a relatively limited scope after Expo got upgraded to version 52. This is a great place for newcomers and beginners alike to get started, gain experience, and get familiar with my contribution process.
 
 ## Kevin's Web Author
 
