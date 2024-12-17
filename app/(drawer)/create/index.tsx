@@ -10,6 +10,7 @@ import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { CustomButton } from '@/components/CustomButton';
+import { useTranslation } from 'react-i18next';
 
 export default function CreateScreen() {
   const backgroundColor = useThemeColor({ light: "#FFF", dark: "#FFF" }, 'background');
@@ -64,13 +65,14 @@ export default function CreateScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale;
 
+  const { t } = useTranslation();
 
   return (
     <>
       <Stack.Screen
         options={{
           headerShown: true,
-          title: 'Create',
+          title: t("createpage:createTitle"),
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontSize: scaledFontSize, // Use scaled font size
@@ -82,7 +84,7 @@ export default function CreateScreen() {
       <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           <View style={[styles.container]}>
-            <ThemedText type="default" style={[styles.labelText]}>Name or Title</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("createpage:nameInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -95,7 +97,7 @@ export default function CreateScreen() {
               placeholder='John Doe'
               keyboardType='default'
             />
-            <ThemedText type="default" style={[styles.labelText]}>Text</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("createpage:textInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -105,12 +107,12 @@ export default function CreateScreen() {
                 })
               }}
               value={text}
-              placeholder='No description'
+              placeholder={t("createpage:textInputPlaceholder")}
               keyboardType="default"
               multiline={true}
               numberOfLines={4}
             />
-            <ThemedText type="default" style={[styles.labelText]}>Password - Leave empty if not required</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("createpage:passwordInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -123,7 +125,7 @@ export default function CreateScreen() {
               placeholder='********'
               secureTextEntry={true}
             />
-            <ThemedText type="default" style={[styles.labelText]}>Age</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("createpage:ageInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -135,13 +137,13 @@ export default function CreateScreen() {
                 })
               }}
               value={age}
-              placeholder='Age'
+              placeholder={t("createpage:ageInputPlaceholder")}
               keyboardType="numeric"
             />
-            <ThemedText type="default">Sex</ThemedText>
+            <ThemedText type="default">{t("createpage:sexInputLabel")}</ThemedText>
             <Dropdown
               label={undefined}
-              placeholder="Select an option..."
+              placeholder={t("createpage:sexInputPlaceholder")}
               options={[
                 { label: 'Male', value: 'male' },
                 { label: 'Female', value: 'female' },
@@ -158,10 +160,10 @@ export default function CreateScreen() {
                 borderRadius: 0
               }}
             />
-            <ThemedText type="default">State</ThemedText>
+            <ThemedText type="default">{t("createpage:stateInputLabel")}</ThemedText>
             <Dropdown
               label={undefined}
-              placeholder="Select an option..."
+              placeholder={t("createpage:stateInputPlaceholder")}
               options={[
                 { label: 'Alabama', value: 'AL' },
                 { label: 'Alaska', value: 'AK' },
@@ -235,7 +237,7 @@ export default function CreateScreen() {
               }}
               isSearchable={true}
             />        
-            <ThemedText type="default" style={[styles.labelText]}>NSFW</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("createpage:nsfwInputLabel")}</ThemedText>
             <Switch
               trackColor={{
                 true: '#81b0ff',
@@ -251,7 +253,7 @@ export default function CreateScreen() {
                 })
               }}
             />
-            <ThemedText type="default" style={[styles.labelText]}>Delete after 24hrs?</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("createpage:deleteAfterTwentyFourHoursLabel")}</ThemedText>
             <Switch
               trackColor={{
                 true: '#81b0ff',

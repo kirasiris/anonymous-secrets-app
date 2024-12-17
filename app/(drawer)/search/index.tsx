@@ -6,6 +6,8 @@ import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { SearchBar } from '@/components/SearchBar';
+import { useTranslation } from 'react-i18next';
+
 
 export default function SearchScreen() {
 
@@ -13,14 +15,16 @@ export default function SearchScreen() {
   const scale = PixelRatio.getFontScale();
 
   // Define a font size based on scale factor
-  const scaledFontSize = 16 * scale;    
+  const scaledFontSize = 16 * scale;
+
+  const { t } = useTranslation();
 
   return (
     <>
       <Stack.Screen
         options={{
           headerShown: true,
-          title: 'Search',
+          title: t('searchpage:searchTitle'),
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontSize: scaledFontSize
@@ -31,7 +35,7 @@ export default function SearchScreen() {
       <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           <View style={[styles.container]}>
-            <ThemedText type="default" style={[styles.labelText]}>Enter ID and then click Enter</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t('searchpage:searchLabel')}</ThemedText>
             <SearchBar lightColor="#FFF" darkColor="#FFF" />
           </View>
         </ScrollView>

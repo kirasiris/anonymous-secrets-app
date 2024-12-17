@@ -1,0 +1,15 @@
+{
+    "createTitle": "Create",
+    "nameInputLabel": "Name or Title",
+    "textInputLabel": "Text",
+    "textInputPlaceholder": "No description",
+    "passwordInputLabel": "Password - Leave empty if not required",
+    "ageInputLabel": "Age",
+    "ageInputPlaceholder": "Age",
+    "sexInputLabel": "Sex",
+    "sexInputPlaceholder": "Select an option",
+    "stateInputLabel": "State",
+    "stateInputPlaceholder": "Select an option",
+    "nsfwInputLabel": "NSFW",
+    "deleteAfterTwentyFourHoursLabel": "Delete after 24hrs?"
+}

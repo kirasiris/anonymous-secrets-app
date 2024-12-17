@@ -5,6 +5,7 @@ import { Toast } from "toastify-react-native";
 import { useRouter } from "expo-router";
 import styles from "@/assets/style";
 import { useThemeColor } from "@/hooks/useThemeColor";
+import { useTranslation } from "react-i18next";
 
 export type SearchBarProps = TextInputProps & {
     lightColor?: string;
@@ -26,7 +27,9 @@ export function SearchBar({
 
     const { _id } = rawFormData;
 
-    const [btnText, setBtnText] = useState('Search by ID');
+    const { t } = useTranslation();
+
+    const [btnText, setBtnText] = useState(t('searchpage:searchInputPlaceholder'));
 
     const searchSecret = async (e: any) => {
         setBtnText('...');

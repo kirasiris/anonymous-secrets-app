@@ -9,7 +9,7 @@ import { VerifyPassword } from '@/components/VerifyPassword';
 import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { Single } from '@/components/secrets/Single';
-import { ThemedText } from '@/components/ThemedText';
+import { useTranslation } from 'react-i18next';
 
 export default function ReadSecretScreen() {
   const router = useRouter();
@@ -62,12 +62,14 @@ export default function ReadSecretScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale;
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack.Screen
         options={{
           headerShown: true,
-          title: 'Reading...',
+          title: t("singlepage:singleTitle"),
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontSize: scaledFontSize, // Use scaled font size

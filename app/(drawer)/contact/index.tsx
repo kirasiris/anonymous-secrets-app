@@ -10,6 +10,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { CustomButton } from '@/components/CustomButton';
+import { useTranslation } from 'react-i18next';
 
 
 export default function ContactScreen() {
@@ -62,11 +63,13 @@ export default function ContactScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale;
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack.Screen options={{
           headerShown: true,
-          title: 'Contact',
+          title: t("contactpage:contactTitle"),
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontSize: scaledFontSize, // Use scaled font size
@@ -77,7 +80,7 @@ export default function ContactScreen() {
       <ThemedView style={{ flex: 1 }}>
         <ScrollView>
           <View style={[styles.container]}>
-            <ThemedText type="default" style={[styles.labelText]}>Name</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("contactpage:nameInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -90,7 +93,7 @@ export default function ContactScreen() {
               placeholder='John Doe'
               keyboardType='default'
             />
-            <ThemedText type="default" style={[styles.labelText]}>Email</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("contactpage:emailInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -103,10 +106,10 @@ export default function ContactScreen() {
               placeholder='john@doe.com'
               keyboardType='email-address'
             />
-            <ThemedText type="default" style={[styles.labelText]}>Subject</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("contactpage:subjectInputLabel")}</ThemedText>
             <Dropdown
               label={undefined}
-              placeholder="Select an option..."
+              placeholder={t("contactpage:subjectInputPlaceholder")}
               options={[
                 { label: 'Suggestion', value: 'suggestion' },
                 { label: 'Bug', value: 'bug' },
@@ -124,7 +127,7 @@ export default function ContactScreen() {
                 borderRadius: 0
               }}
             />
-            <ThemedText type="default" style={[styles.labelText]}>Message</ThemedText>
+            <ThemedText type="default" style={[styles.labelText]}>{t("contactpage:messageInputLabel")}</ThemedText>
             <TextInput
               style={[{ backgroundColor }, styles.formControl, styles.mb3]}
               onChangeText={e => {
@@ -134,7 +137,7 @@ export default function ContactScreen() {
                 })
               }}
               value={text}
-              placeholder='Here goes the message'
+              placeholder={t("contactpage:messageInputPlaceholder")}
               keyboardType="default"
               multiline={true}
               numberOfLines={4}

@@ -8,6 +8,7 @@ import { Loader } from '@/components/Loader';
 import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { ParseHtml } from '@/components/ParseHtml';
+import { useTranslation } from 'react-i18next';
 
 
 export default function ChangelogsScreen() {
@@ -69,11 +70,13 @@ export default function ChangelogsScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale;
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack.Screen options={{
         headerShown: true,
-        title: 'Changelog',
+        title: t("changelogpage:changelogTitle"),
         headerTitleAlign: 'left',
         headerTitleStyle: {
           fontSize: scaledFontSize, // Use scaled font size
@@ -83,7 +86,7 @@ export default function ChangelogsScreen() {
       }} />
         <ThemedView style={{ flex: 1 }}>
           <View style={[styles.container]}>
-            <ThemedText type='subtitle' style={[styles.mb3]}>These are the changes the backend of the application receives</ThemedText>
+            <ThemedText type='subtitle' style={[styles.mb3]}>{t("changelogpage:changelogDescription")}</ThemedText>
           </View>
           <View style={[styles.container, { flex: 1, marginLeft: 15, marginRight: 0 }]}>
           {

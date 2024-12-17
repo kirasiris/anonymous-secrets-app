@@ -5,9 +5,11 @@ import * as Clipboard from 'expo-clipboard';
 import { ThemedText } from '../ThemedText';
 import { TabBarIcon } from '../navigation/TabBarIcon';
 import { calculateTimeSincePublished } from '@/scripts/calculatetimesincepublished';
+// import { calculateTimeSincePublished } from "befree-utilities";
 import { Flag } from '../Flag';
 import { ReportModal } from '../ReportModal';
 import styles from '@/assets/style';
+import { useTranslation } from 'react-i18next';
 
 export function Single({ object = {}, isSingle = true }) {
 
@@ -38,6 +40,8 @@ export function Single({ object = {}, isSingle = true }) {
         await Clipboard.setStringAsync(object.text);
     }
 
+    const { t } = useTranslation();
+
     return (
         <View style={[styles.card]}>
             {/* User info section */}
@@ -64,7 +68,7 @@ export function Single({ object = {}, isSingle = true }) {
                     </View>
                     <View style={[styles.cardSubtitle]}>
                         <Flag flag={object.state} style={[{ marginRight: 5 }]} />
-                        <ThemedText type="default" style={[styles.cardHandle]} onPress={copyId}>Click me to copy Object Id</ThemedText>
+                        <ThemedText type="default" style={[styles.cardHandle]} onPress={copyId}>{t("common:copyObjectId")}</ThemedText>
                     </View>
                 </View>
             </View>
@@ -75,7 +79,7 @@ export function Single({ object = {}, isSingle = true }) {
                     type="default"
                     style={[styles.cardText, styles.nsfwCardText]}
                 >
-                    THIS ENTRY IS NSFW. READ IT AT YOUR OWN RISK...
+                    {t("common:NSFWWarning")}
                 </ThemedText>
             )}
             {/* Full NSFW content on single page */}
@@ -94,7 +98,7 @@ export function Single({ object = {}, isSingle = true }) {
                     type="default"
                     style={[styles.cardText]}
                 >
-                    This secret requires a password lol
+                    {t("common:passwordRequired")}
                 </ThemedText>
             )}
             {/* Display text if SFW and not password-protected */}
@@ -133,7 +137,7 @@ export function Single({ object = {}, isSingle = true }) {
                                 fontSize: 14,
                                 color: "#1DA1F2"
                             }]}>
-                                Read&nbsp;More&nbsp;&gt;&gt;
+                                {t("common:readMoreLink")}
                         </ThemedText>
                     </Link>            
                 )}
@@ -145,7 +149,7 @@ export function Single({ object = {}, isSingle = true }) {
                             color: "#1DA1F2"
                         }]}
                     >
-                        Share
+                        {t("common:shareLink")}
                     </ThemedText>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.cardIcon]} onPress={copyText}>
@@ -155,7 +159,7 @@ export function Single({ object = {}, isSingle = true }) {
                             fontSize: 14,
                             color: "#1DA1F2"
                         }]}>
-                            Copy Text
+                            {t("common:copyTextLink")}
                         </ThemedText>
                 </TouchableOpacity>
                 <TouchableOpacity style={[styles.cardIcon]}>

@@ -5,6 +5,7 @@ import { fetchurl } from '@/scripts/fetchurl';
 import { ThemedText } from './ThemedText';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { CustomButton } from './CustomButton';
+import { useTranslation } from 'react-i18next';
 
 export type ModalBackgroundProps = BackgroundPropType & {
     resourceId?: string | null;
@@ -55,6 +56,8 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
         });
     };
 
+    const { t } = useTranslation();
+
   return (
     <>
         <Pressable
@@ -66,7 +69,7 @@ export function ReportModal({ resourceId = null, postType = '', onModel = 'Repor
                     fontSize: 14,
                     color: "#1DA1F2"
                 }}>
-                    Report!
+                    {t("common:reportLink")}
                 </ThemedText>
         </Pressable>
         <Modal

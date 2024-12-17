@@ -10,6 +10,7 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { useThemeColor } from '@/hooks/useThemeColor';
 import { CustomButton } from '@/components/CustomButton';
+import { useTranslation } from 'react-i18next';
 
 export default function FilterScreen() {
   const backgroundColor = useThemeColor({ light: "#FFF", dark: "#FFF" }, 'background');
@@ -67,11 +68,13 @@ export default function FilterScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale; // Default font size of 16sp
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack.Screen options={{
         headerShown: true,
-        title: 'Filter',
+        title: t("filterpage:filterTitle"),
         headerTitleAlign: 'left',
         headerTitleStyle: {
           fontSize: scaledFontSize, // Use scaled font size
@@ -82,7 +85,7 @@ export default function FilterScreen() {
         <ThemedView style={{ flex: 1 }}>
           <ScrollView>
             <View style={[styles.container]}>
-              <ThemedText type="default" style={[styles.labelText]}>From age</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>{t("filterpage:fromAgeInputLabel")}</ThemedText>
               <TextInput
                 id='age'
                 style={[{ backgroundColor }, styles.formControl, styles.mb3]}
@@ -98,7 +101,7 @@ export default function FilterScreen() {
                 placeholder='13'
                 keyboardType="numeric"
               />
-              <ThemedText type="default" style={[styles.labelText]}>To age</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>{t("filterpage:toAgeInputLabel")}</ThemedText>
               <TextInput
                 id='secondaryage'
                 style={[{ backgroundColor }, styles.formControl, styles.mb3]}
@@ -114,10 +117,10 @@ export default function FilterScreen() {
                 placeholder='99'
                 keyboardType="numeric"
               />
-              <ThemedText type="default" style={[styles.labelText]}>Sex</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>{t("filterpage:sexInputLabel")}</ThemedText>
               <Dropdown
                 label={undefined}
-                placeholder="Select an option..."
+                placeholder={t("filterpage:sexInputPlaceholder")}
                 options={[
                   { label: 'Male', value: 'male' },
                   { label: 'Female', value: 'female' },
@@ -134,10 +137,10 @@ export default function FilterScreen() {
                   borderRadius: 0
                 }}
               />
-              <ThemedText type="default" style={[styles.labelText]}>State</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>{t("filterpage:stateInputLabel")}</ThemedText>
               <Dropdown
                 label={undefined}
-                placeholder="Select an option..."
+                placeholder={t("filterpage:stateInputPlaceholder")}
                 options={[
                   { label: 'Alabama', value: 'AL' },
                   { label: 'Alaska', value: 'AK' },
@@ -209,7 +212,7 @@ export default function FilterScreen() {
                 }}
                 isSearchable={true}
               />
-              <ThemedText type="default" style={[styles.labelText]}>NSFW</ThemedText>
+              <ThemedText type="default" style={[styles.labelText]}>{t("filterpage:nsfwInputLabel")}</ThemedText>
               <Switch
                 id='nsfw'
                 trackColor={{

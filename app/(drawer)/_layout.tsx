@@ -7,8 +7,11 @@ import { FontAwesomeIcon } from '@/components/FontAwesomeIcon';
 import styles from '@/assets/style';
 import CustomDrawerContent from '@/components/navigation/CustomDrawerContent';
 import { DrawerToggleButton } from '@react-navigation/drawer';
+import { useTranslation } from 'react-i18next';
 
 export default function DrawerLayout() {
+
+  const { t } = useTranslation();
 
   return (
     <Drawer
@@ -20,7 +23,7 @@ export default function DrawerLayout() {
         headerLeft: () => <DrawerToggleButton tintColor="#FFF" />,
         headerRight: () =>  <View style={styles.headerRightContainer}>
                               <Link href="/search"><FontAwesomeIcon name='search' lightColor="#FFF" darkColor="#FFF" /></Link>
-                              <Link href="/create" style={[styles.rightButton, styles.btn, styles.btnOutlineLight, {color: '#FFF'}]}>New</Link>
+                              <Link href="/create" style={[styles.rightButton, styles.btn, styles.btnOutlineLight, {color: '#FFF'}]}>{t('common:buttonNew')}</Link>
                             </View>,
         headerStyle: {
           backgroundColor: "#0163D2",
@@ -32,42 +35,42 @@ export default function DrawerLayout() {
       <Drawer.Screen
         name='home'
         options={{
-          drawerLabel: 'Home',
+          drawerLabel: t('drawermenu:homeItem'),
           title: 'Home',
         }}
       />
       <Drawer.Screen
         name='filter'
         options={{
-          drawerLabel: 'Filter',
+          drawerLabel: t('drawermenu:filterItem'),
           title: 'Filter',
         }}
       />
       <Drawer.Screen
         name='rules'
         options={{
-          drawerLabel: 'Rules',
+          drawerLabel: t('drawermenu:rulesItem'),
           title: 'Rules',
         }}
       />
       <Drawer.Screen
         name='polls'
         options={{
-          drawerLabel: 'Polls',
+          drawerLabel: t('drawermenu:pollsItem'),
           title: 'Polls'
         }}
       />
       <Drawer.Screen
         name='changelogs'
         options={{
-          drawerLabel: 'Changelog',
+          drawerLabel: t('drawermenu:changelogItem'),
           title: 'Changelog'
         }}
       />
       <Drawer.Screen
         name='contact'
         options={{
-          drawerLabel: 'Contact',
+          drawerLabel: t('drawermenu:contactItem'),
           title: 'Contact'
         }}
       />
@@ -77,6 +80,13 @@ export default function DrawerLayout() {
           drawerLabel: 'Search',
           title: 'Search',
           drawerItemStyle: { display: 'none' }
+        }}
+      />
+      <Drawer.Screen
+        name='settings'
+        options={{
+          drawerLabel: t('drawermenu:settingsItem'),
+          title: 'Settings',
         }}
       />
       <Drawer.Screen

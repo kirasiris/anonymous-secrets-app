@@ -1,0 +1,10 @@
+{
+    "filterTitle": "Filtro",
+    "fromAgeInputLabel": "Desde la edad de?",
+    "toAgeInputLabel": "Hasta la edad de?",
+    "sexInputLabel": "Sexo",
+    "sexInputPlaceholder": "Seleccionar una opcion",
+    "stateInputLabel": "Estado",
+    "stateInputPlaceholder": "Seleccionar una opcion",
+    "nsfwInputLabel": "NSFW"
+}

@@ -9,6 +9,7 @@ import styles from '@/assets/style';
 import { SearchBar } from '@/components/SearchBar';
 import { ThemedView } from '@/components/ThemedView';
 import { Single } from '@/components/secrets/Single';
+import { useTranslation } from 'react-i18next';
 
 export default function HomeScreen() {
 
@@ -67,6 +68,8 @@ export default function HomeScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale; // Default font size of 16sp
 
+  const { t } = useTranslation();
+
   // Prevent going back -- This is a hack to solve the "The specified child already has a parent. You must use removeView() in the parent component first." issue
   // Not at all recommended for the long run
   // To delete once a better solution is available or once react-navagation solves it.
@@ -76,7 +79,7 @@ export default function HomeScreen() {
       <Stack.Screen
         options={{
           headerShown: true,
-          title: 'Home',
+          title: t("homepage:homeTitle"),
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontSize: scaledFontSize, // Use scaled font size

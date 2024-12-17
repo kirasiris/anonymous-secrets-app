@@ -1,0 +1,9 @@
+{
+    "contactTitle": "Contact",
+    "nameInputLabel": "Name",
+    "emailInputLabel": "Email",
+    "subjectInputLabel": "Subject",
+    "subjectInputPlaceholder": "Select an option",
+    "messageInputLabel": "Message",
+    "messageInputPlaceholder": "Here goes the message"
+}

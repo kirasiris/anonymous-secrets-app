@@ -1,10 +1,11 @@
-import { View, Alert, Share } from 'react-native'
 import React from 'react'
+import { View, Alert, Share } from 'react-native'
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { ThemedText } from '../ThemedText';
 import { ExternalLink } from '../ExternalLink';
 import { CustomButton } from '../CustomButton';
+import { useTranslation } from 'react-i18next';
 
 export default function CustomDrawerContent(props:any) {
 
@@ -29,6 +30,10 @@ export default function CustomDrawerContent(props:any) {
             Alert.alert(err.message);
         }
     }
+
+    const { t } = useTranslation();
+
+
     return (
         <View style={{ flex: 1 }}>
             {/* This is supposed to be a wrapper for the drawer items */}
@@ -47,7 +52,7 @@ export default function CustomDrawerContent(props:any) {
                     paddingBottom: bottom + 10
                 }}
             >
-                <CustomButton title='Share App' onPress={shareApp} lightColor="#000" darkColor="#000" />
+                <CustomButton title={t("drawermenu:shareAppItem")} onPress={shareApp} lightColor="#000" darkColor="#000" />
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between'
@@ -55,7 +60,7 @@ export default function CustomDrawerContent(props:any) {
                     <ExternalLink
                         href="https://play.google.com/store/apps/details?id=com.kirasiris.anonymoussecretsapp"
                     >
-                            <ThemedText type="link">Rate App</ThemedText>
+                            <ThemedText type="link">{t("drawermenu:rateAppItem")}</ThemedText>
                     </ExternalLink>
                     <ExternalLink
                         href="https://github.com/kirasiris/anonymous-secrets-app"
@@ -63,7 +68,7 @@ export default function CustomDrawerContent(props:any) {
                             <ThemedText type="link">GitHub</ThemedText>
                     </ExternalLink>
                 </View>
-                <ThemedText type="default">{process.env.EXPO_PUBLIC_APP_VERSION} by
+                <ThemedText type="default">{process.env.EXPO_PUBLIC_APP_VERSION} {t("drawermenu:byKevinItem")}
                     <ExternalLink href="https://kevinfonseca.vercel.app/">
                         <ThemedText type="link"> Kevin</ThemedText>
                     </ExternalLink>

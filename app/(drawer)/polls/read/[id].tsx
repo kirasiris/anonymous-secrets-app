@@ -8,6 +8,7 @@ import styles from '@/assets/style';
 import { ThemedView } from '@/components/ThemedView';
 import { ThemedText } from '@/components/ThemedText';
 import { ParseHtml } from '@/components/ParseHtml';
+import { useTranslation } from 'react-i18next';
 
 export default function ReadPollScreen() {
   
@@ -58,12 +59,14 @@ export default function ReadPollScreen() {
   // Define a font size based on scale factor
   const scaledFontSize = 16 * scale;
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Stack.Screen
         options={{
           headerShown: true,
-          title: 'Reading...',
+          title: t("pollpage:singlePollTitle"),
           headerTitleAlign: 'left',
           headerTitleStyle: {
             fontSize: scaledFontSize, // Use scaled font size
