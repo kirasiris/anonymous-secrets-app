@@ -54,6 +54,13 @@ export default function DrawerLayout() {
         }}
       />
       <Drawer.Screen
+        name='css'
+        options={{
+          drawerLabel: t('drawermenu:cssItem'),
+          title: 'Child Safety Standards',
+        }}
+      />
+      <Drawer.Screen
         name='polls'
         options={{
           drawerLabel: t('drawermenu:pollsItem'),

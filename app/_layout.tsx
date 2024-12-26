@@ -31,7 +31,7 @@ export default function RootLayout() {
     return null;
   }
 
-  // Orientation
+  // // Orientation
   // const [orientation, setOrientation] = useState({});
 
   // useEffect(() => {

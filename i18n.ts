@@ -9,6 +9,7 @@ const resources = {
 		common: () => import("./locales/en/common.json"),
 		contactpage: () => import("./locales/en/contactpage.json"),
 		createpage: () => import("./locales/en/createpage.json"),
+		csspage: () => import("./locales/en/csspage.json"),
 		drawermenu: () => import("./locales/en/draweroption.json"),
 		filterpage: () => import("./locales/en/filterpage.json"),
 		homepage: () => import("./locales/en/homepage.json"),
@@ -23,6 +24,7 @@ const resources = {
 		common: () => import("./locales/es/common.json"),
 		contactpage: () => import("./locales/es/contactpage.json"),
 		createpage: () => import("./locales/es/createpage.json"),
+		csspage: () => import("./locales/es/csspage.json"),
 		drawermenu: () => import("./locales/es/draweroption.json"),
 		filterpage: () => import("./locales/es/filterpage.json"),
 		homepage: () => import("./locales/es/homepage.json"),
@@ -48,7 +50,7 @@ i18next
     fallbackLng: "en",
     // compatibilityJSON: "v3", // compatibility isssue for mobile
     debug: true,
-    ns: ["changelogpage", "common", "contactpage", "createpage", "drawermenu", "filterpage", "homepage", "pollpage", "rulepage", "searchpage", "settingspage", "singlepage"],
+    ns: ["changelogpage", "common", "contactpage", "createpage", "csspage", "drawermenu", "filterpage", "homepage", "pollpage", "rulepage", "searchpage", "settingspage", "singlepage"],
     defaultNS: "common",
     interpolation: {
       escapeValue: false,
