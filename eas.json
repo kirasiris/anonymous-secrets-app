@@ -1,0 +1,35 @@
+{
+  "cli": {
+    "version": ">= 14.3.1",
+    "appVersionSource": "remote"
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal"
+    },
+    "preview": {
+      "distribution": "internal"
+    },
+    "production": {
+      "autoIncrement": true,
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://befree.herokuapp.com/api/v1",
+        "EXPO_PUBLIC_RULES_PAGE_ID": "6715785421821abe135c456a",
+        "EXPO_PUBLIC_CHILD_SAFETY_STANDARDS_PAGE_ID": "67672814962cc94e8ad3269b",
+        "EXPO_PUBLIC_RULES_PAGE_SLUG": "rules",
+        "EXPO_PUBLIC_APP_EMAIL": "kuaf1998@gmail.com",
+        "EXPO_PUBLIC_APP_VERSION": "v25.0.0",
+        "EXPO_PUBLIC_OWNER_URL": "https://kevinurielfonseca.me",
+        "EXPO_PUBLIC_ANONYMOUS_SECRETS_APP_URL": "https://play.google.com/store/apps/details?id=com.kirasiris.anonymoussecretsapp",
+        "EXPO_PUBLIC_GITHUB_REPOSITORY_URL": "https://github.com/kirasiris/anonymous-secrets-app"
+      },
+      "android": {
+        "image": "latest"
+      }
+    }
+  },
+  "submit": {
+    "production": {}
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "screenTitle": "Filtro",
+    "fromAgeLabel": "Desde la edad?",
+    "toAgeLabel": "Hasta la edad?",
+    "sexLabel": "Sexo",
+    "stateLabel": "Estado",
+    "nsfwLabel": "NESPT"
+}

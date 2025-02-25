@@ -1,0 +1,15 @@
+{
+    "newSecretBtn": "Nuevo",
+    "readingTitleScreen": "Leyendo...",
+    "readSecretLink": "Leer",
+    "shareSecretLink": "Compartir",
+    "copySecretLink": "Copiar",
+    "reportSecretLink": "Reportar!",
+    "copyObjectIdLabel": "Copiar ObjectId",
+    "passwordRequiredLabel": "Contraseña requerida",
+    "commentsLabel": "Comentarios:",
+    "withoutCommentsLabel": "Sin comentarios",
+    "withoutSecretsLabel": "SIN SECRETOS",
+    "wakingUpServerLabel": "Despertando servidor...",
+    "thisIsNSFWLabel": "ESTO ES NESPT. LEA EN SU PROPIO RIESGO"
+}

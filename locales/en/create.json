@@ -1,0 +1,11 @@
+{
+    "screenTitle": "Create",
+    "nameLabel": "Name or Title",
+    "textLabel": "Text",
+    "passwordLabel": "Password - Leave empty if not required",
+    "ageLabel": "Age",
+    "sexLabel": "Sex",
+    "stateLabel": "State",
+    "nsfwLabel": "NSFW?",
+    "delete24hrsLabel": "Delete after 24hrs?"
+}
