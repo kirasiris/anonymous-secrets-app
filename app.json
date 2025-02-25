@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "anonymous-secrets",
-    "slug": "anonymous-secrets",
+    "name": "anonymous-secrets-app",
+    "slug": "anonymous-secrets-app",
     "version": "24.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
