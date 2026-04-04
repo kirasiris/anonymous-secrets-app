@@ -2,7 +2,7 @@
   "expo": {
     "name": "anonymous-secrets-app",
     "slug": "anonymous-secrets-app",
-    "version": "24.0.0",
+    "version": "27.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "anonymous-secrets-app",
@@ -14,11 +14,6 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.kirasiris.anonymoussecretsapp"
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
